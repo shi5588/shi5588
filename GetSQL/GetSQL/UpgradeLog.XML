@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="GetSQL">
+</Property><Property Name="解决方案文件" Value="D:\sca\code\sca\TS\common\GetSQL\GetSQL\GetSQL.sln">
+</Property><Property Name="用户选项文件" Value="D:\sca\code\sca\TS\common\GetSQL\GetSQL\GetSQL.suo">
+</Property><Property Name="Date" Value="2012年8月1日 星期三">
+</Property><Property Name="Time" Value="9:07">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="GetSQL.sln" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\GetSQL.sln">
+</Event><Event ErrorLevel="0" Project="" Source="GetSQL.suo" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\GetSQL.suo">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="GetSQL.csproj" Description="项目文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\GetSQL.csproj">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="FrmConnection.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\FrmConnection.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="FrmConnection.Designer.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\FrmConnection.Designer.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="FrmMain.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\FrmMain.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="FrmMain.Designer.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\FrmMain.Designer.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="Program.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\Program.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="Properties\AssemblyInfo.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="SqlDal.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\SqlDal.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="Properties\Resources.Designer.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="Properties\Settings.Designer.cs" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="App.config" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\App.config">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="Properties\Settings.settings" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="enterpriseC.ico" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\enterpriseC.ico">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="FrmConnection.resx" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\FrmConnection.resx">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="FrmMain.resx" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\FrmMain.resx">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="Properties\Resources.resx" Description="文件已成功备份为 D:\sca\code\sca\TS\common\GetSQL\GetSQL\Backup\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="GetSQL" Source="GetSQL.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="GetSQL" Source="GetSQL.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="" Source="GetSQL.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="GetSQL.sln" Description="Converted">
+</Event></UpgradeLog>

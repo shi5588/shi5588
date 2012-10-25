@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptogram", "RMCrypt\Cryptogram.csproj", "{82F94EA5-2E8E-44FD-ACDC-00127EC03064}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD5", "MD5\MD5.csproj", "{1B058909-B2C2-4ECE-84B0-D0612493423F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSA", "RSA\RSA.csproj", "{0499F428-7AAA-4F5B-831F-2C157E45389E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHA256", "SHA256\SHA256.csproj", "{AAB3DD14-51C9-4D89-89BA-44A058DB0A64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82F94EA5-2E8E-44FD-ACDC-00127EC03064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F94EA5-2E8E-44FD-ACDC-00127EC03064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F94EA5-2E8E-44FD-ACDC-00127EC03064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F94EA5-2E8E-44FD-ACDC-00127EC03064}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B058909-B2C2-4ECE-84B0-D0612493423F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B058909-B2C2-4ECE-84B0-D0612493423F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B058909-B2C2-4ECE-84B0-D0612493423F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B058909-B2C2-4ECE-84B0-D0612493423F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0499F428-7AAA-4F5B-831F-2C157E45389E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0499F428-7AAA-4F5B-831F-2C157E45389E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0499F428-7AAA-4F5B-831F-2C157E45389E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0499F428-7AAA-4F5B-831F-2C157E45389E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAB3DD14-51C9-4D89-89BA-44A058DB0A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB3DD14-51C9-4D89-89BA-44A058DB0A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB3DD14-51C9-4D89-89BA-44A058DB0A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB3DD14-51C9-4D89-89BA-44A058DB0A64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
