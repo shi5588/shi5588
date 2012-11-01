@@ -12,3 +12,6 @@ D:\sca\2010sample\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.pdb
 D:\EF\EF_Demo\EF_Demo\bin\Debug\EF_Demo.exe.config
 D:\EF\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.exe
 D:\EF\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.pdb
+D:\demo\git\shi5588\EF_Demo\EF_Demo\bin\Debug\EF_Demo.exe.config
+D:\demo\git\shi5588\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.exe
+D:\demo\git\shi5588\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.pdb

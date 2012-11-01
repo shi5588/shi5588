@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_Demo", "EF_Demo\EF_Demo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_Dal", "EF_Dal\EF_Dal.csproj", "{0A7299F5-579F-413D-B258-C7C8A044CE20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDAL", "IDAL\IDAL.csproj", "{11F790E0-3A0B-4942-9672-9A1067B97CD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{0A7299F5-579F-413D-B258-C7C8A044CE20}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0A7299F5-579F-413D-B258-C7C8A044CE20}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0A7299F5-579F-413D-B258-C7C8A044CE20}.Release|x86.ActiveCfg = Release|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{11F790E0-3A0B-4942-9672-9A1067B97CD5}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
