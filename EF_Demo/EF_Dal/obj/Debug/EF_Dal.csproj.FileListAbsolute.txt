@@ -1,0 +1,8 @@
+D:\sca\2010sample\EF_Demo\EF_Dal\obj\Debug\ResolveAssemblyReference.cache
+D:\sca\2010sample\EF_Demo\EF_Dal\bin\Debug\EF_Dal.dll.config
+D:\sca\2010sample\EF_Demo\EF_Dal\bin\Debug\EF_Dal.dll
+D:\sca\2010sample\EF_Demo\EF_Dal\bin\Debug\EF_Dal.pdb
+D:\sca\2010sample\EF_Demo\EF_Dal\bin\Debug\EntityFramework.dll
+D:\sca\2010sample\EF_Demo\EF_Dal\bin\Debug\EntityFramework.xml
+D:\sca\2010sample\EF_Demo\EF_Dal\obj\Debug\EF_Dal.dll
+D:\sca\2010sample\EF_Demo\EF_Dal\obj\Debug\EF_Dal.pdb

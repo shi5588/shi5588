@@ -1,0 +1,14 @@
+D:\sca\2010sample\EF_Demo\EF_Demo\bin\Debug\EF_Demo.exe.config
+D:\sca\2010sample\EF_Demo\EF_Demo\bin\Debug\EF_Demo.exe
+D:\sca\2010sample\EF_Demo\EF_Demo\bin\Debug\EF_Demo.pdb
+D:\sca\2010sample\EF_Demo\EF_Demo\bin\Debug\EntityFramework.dll
+D:\sca\2010sample\EF_Demo\EF_Demo\bin\Debug\EntityFramework.xml
+D:\sca\2010sample\EF_Demo\EF_Demo\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\sca\2010sample\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.Properties.Resources.resources
+D:\sca\2010sample\EF_Demo\EF_Demo\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\sca\2010sample\EF_Demo\EF_Demo\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\sca\2010sample\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.exe
+D:\sca\2010sample\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.pdb
+D:\EF\EF_Demo\EF_Demo\bin\Debug\EF_Demo.exe.config
+D:\EF\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.exe
+D:\EF\EF_Demo\EF_Demo\obj\x86\Debug\EF_Demo.pdb
