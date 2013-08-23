@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>MyXls Changelog</title>
+</head>
+<body>
+<h2>v0.6.4</h2>
+<ul>
+<li>Added standard FillPattern enumeration.</li>
+<li>Added converters for DataSet and DataSource to Worksheet conversion.</li>
+</ul>
+
+<h2>v0.6.3</h2>
+<ul>
+<li>Removed List<T> inheritance from Worksheets so users don't try Worksheets.Add(Worksheet), which totally won't work.</li>
+<li>Fixed a problem with reading floating point numbers stored as an integer RK value.</li>
+<li>Fixed a problem with reading from the shared string table.</li>
+<li>Added a VS 2008 solution file.</li>
+<li>Fixed a problem with reading the CONTINUE record when the record is full, but the spillover string is not split between the records.</li>
+<li>Changed tests to use anonymous delegates instead of lambda expressions for compatibility with VS2005.</li>
+<li>Reverted the TestWeb project file and web.config back to the VS2005 version.  This project is compatible with 2008 and 2005.</li>
+<li>Implemented IEnumerator<T> in the Rows class</li>
+<li>Added constructor for XlsDocument that loads the document from a stream.</li>
+<li>Added an overload to the Save method that saves to a stream.</li>
+<li>Added test for offset error.</li>
+</ul>
+
+<h2>v0.6.2</h2>
+<ul>
+<li>Added missing XMLDOC comments</li>
+<li>Expanded read functionality to read MULBLNK and MULRK records, as well as initial FORMULA record functionality (reading cached text formula results) -- see Bug 1923115</li>
+<li>Began support for Rich Text values</li>
+<li>Unicode string support/refactoring almost finished</li>
+<li>Successfully reading/writing Northwind DB to/from .XLS</li>
+<li>Fixed Workbook to not try and read non-existent SharedStringTables</li>
+<li>Fixed Excel 2007 issue - was choking without XF 17 (index 16) for Default Cell Format, whereas Excel 2003 was fine without it</li>
+<li>Added standard FontWeight enumeration.</li>
+<li>Implemented SharedStringTable (LABELSST vs. LABEL for text values)</li>
+<li>Allowed optional switching between Shared and non-Shared strings (for optimizing performance vs. filesize)</li>
+<li>Implemented CONTINUE records for Shared String Table Updated</li>
+<li>BIFF8 constants class</li>
+<li>Modified XlsDocument.Save(). Simplified code and now writes directly to a stream instead of a copy which should be faster and less overhead.</li>
+<li>Added LineStyle enumeration for standard line styles.</li>
+<li>Added methods to write DataSet to XlsDocument and DataTable to Worksheet</li>
+<li>Added BLANK record (supports setting Cell value to null)</li>
+<li>Added support for more .NET primitive types on Cell.Value Fixed issues with certain direct casts by changing to use Convert methods</li>
+</ul>
+
+<h2>v0.6.1</h2>
+<ul>
+<li>Initial Workbook Structure and Windows (Workbook) Protection</li>
+<li>Initial Color support</li>
+<li>Initial Cell Locking (Worksheet Protection) support</li>
+<li>Initial Merge Cells support</li>
+<li>Implemented Column Width</li>
+<li>Added XMLDoc to all public classes, fields, properties and methods</li>
+<li>Continued adding Unit Tests Fixed Save to work on non-MS environments</li>
+</ul>
+
+<h2>v0.6.0</h2>
+<ul>
+<li>Moved Cell Formatting properties from XF to directly on Cell for easier formatting.</li>
+<li>Fixed numeric (integer, double, and float) implementations, using bitshifting and .NET BitConverter directly from .NET primitives.</li>
+<li>Added DateTime value support</li>
+<li>Added initial framework for Read functionality (not finished but reading to workbook level now)</li>
+<li>Added initial Format (Decimal, Accounting, Currency, DateTime, etc.) support and StandardFormats class for standard Excel formats.</li>
+<li>Added framework for unit testing via Excel OLE automation.</li>
+<li>Consolidated External Bytes and MyOle2 projects into MyXls project so only 1 dll is required for deployment.</li>
+<li>Removed several unused methods/members, and changed several from public to internal.</li>
+<li>Added VB sample code in addition to C# samples.</li>
+<li>Fixed issues with writing very large (>20MB) files.</li>
+<li>Added this document.</li>
+</ul>
+</body>
+</html>

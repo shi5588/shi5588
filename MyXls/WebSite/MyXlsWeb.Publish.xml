@@ -1,0 +1,9 @@
+<publishData>
+  <publishTarget publishUrl="ftp://in2words.org/myxlsweb/">
+    <file relUrl="myxls.css" publishTime="11/7/2007 8:54:27 PM" />
+    <file relUrl="index.htm" publishTime="1/7/2008 11:11:10 PM" />
+    <file relUrl="bin/MyXlsWeb.pdb" publishTime="11/10/2007 9:58:51 AM" />
+    <file relUrl="bin/MyXlsWeb.dll" publishTime="11/10/2007 9:58:52 AM" />
+    <file relUrl="Web.config" publishTime="11/7/2007 8:51:43 PM" />
+  </publishTarget>
+</publishData>

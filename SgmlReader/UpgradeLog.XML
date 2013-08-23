@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="SgmlReader8">
+</Property><Property Name="解决方案文件" Value="C:\Users\sca\Desktop\SgmlReader\SgmlReader\SgmlReader8.sln">
+</Property><Property Name="Date" Value="2013年08月23日">
+</Property><Property Name="Time" Value="15:55">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="SgmlReader8.sln" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\SgmlReader8.sln">
+</Event><Event ErrorLevel="0" Project="SgmlReader8" Source="CommandLine\SgmlReader8.csproj" Description="项目文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\CommandLine\SgmlReader8.csproj">
+</Event><Event ErrorLevel="0" Project="SgmlReader8" Source="CommandLine\SgmlReader8.csproj.user" Description="项目用户文件成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\CommandLine\SgmlReader8.csproj.user">
+</Event><Event ErrorLevel="0" Project="SgmlReader8" Source="CommandLine\AssemblyInfo.cs" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\CommandLine\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="SgmlReader8" Source="CommandLine\Main.cs" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\CommandLine\Main.cs">
+</Event><Event ErrorLevel="1" Project="SgmlReader8" Source="Readme.htm" Description="已备份的项目可能没有生成。项目包含链接文件: C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\CommandLine\Readme.htm">
+</Event><Event ErrorLevel="0" Project="SgmlReader8" Source="Readme.htm" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\CommandLine\Readme.htm">
+</Event><Event ErrorLevel="0" Project="SgmlReader8" Source="CommandLine\App.ico" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\CommandLine\App.ico">
+</Event><Event ErrorLevel="0" Project="SgmlReader8" Source="CommandLine\Html.dtd" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\CommandLine\Html.dtd">
+</Event><Event ErrorLevel="1" Project="SgmlReader8" Source="CommandLine\SgmlReader8.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="SgmlReader8" Source="CommandLine\SgmlReader8.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="SgmlReader8" Source="CommandLine\SgmlReader8.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SgmlReaderDll8" Source="SgmlReaderDll\SgmlReaderDll8.csproj" Description="项目文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\SgmlReaderDll\SgmlReaderDll8.csproj">
+</Event><Event ErrorLevel="0" Project="SgmlReaderDll8" Source="SgmlReaderDll\AssemblyInfo.cs" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\SgmlReaderDll\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="SgmlReaderDll8" Source="SgmlReaderDll\SgmlParser.cs" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\SgmlReaderDll\SgmlParser.cs">
+</Event><Event ErrorLevel="0" Project="SgmlReaderDll8" Source="SgmlReaderDll\SgmlReader.cs" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\SgmlReaderDll\SgmlReader.cs">
+</Event><Event ErrorLevel="1" Project="SgmlReaderDll8" Source="CommandLine\Html.dtd" Description="已备份的项目可能没有生成。项目包含链接文件: C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\SgmlReaderDll\Html.dtd">
+</Event><Event ErrorLevel="0" Project="SgmlReaderDll8" Source="CommandLine\Html.dtd" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\SgmlReaderDll\Html.dtd">
+</Event><Event ErrorLevel="1" Project="SgmlReaderDll8" Source="SgmlReaderDll\SgmlReaderDll8.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="SgmlReaderDll8" Source="SgmlReaderDll\SgmlReaderDll8.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="SgmlReaderDll8" Source="SgmlReaderDll\SgmlReaderDll8.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="TestSuite8" Source="TestSuite\TestSuite8.csproj" Description="项目文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\TestSuite\TestSuite8.csproj">
+</Event><Event ErrorLevel="0" Project="TestSuite8" Source="TestSuite\AssemblyInfo.cs" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\TestSuite\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="TestSuite8" Source="TestSuite\Test.cs" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\TestSuite\Test.cs">
+</Event><Event ErrorLevel="0" Project="TestSuite8" Source="TestSuite\html.suite" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\TestSuite\html.suite">
+</Event><Event ErrorLevel="0" Project="TestSuite8" Source="TestSuite\ofx.suite" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\TestSuite\ofx.suite">
+</Event><Event ErrorLevel="0" Project="TestSuite8" Source="TestSuite\App.ico" Description="文件已成功备份为 C:\Users\sca\Desktop\SgmlReader\SgmlReader\Backup\TestSuite\App.ico">
+</Event><Event ErrorLevel="1" Project="TestSuite8" Source="TestSuite\TestSuite8.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="TestSuite8" Source="TestSuite\TestSuite8.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="TestSuite8" Source="TestSuite\TestSuite8.csproj" Description="Converted">
+</Event><Event ErrorLevel="2" Project="" Source="SgmlReader8.sln" Description="无法转换解决方案文件“C:\Users\sca\Desktop\SgmlReader\SgmlReader\SgmlReader8.sln”，因为它在磁盘上是只读的。若要转换此解决方案，请将此解决方案文件的权限更改为允许修改，然后重新打开它。">
+</Event><Event ErrorLevel="3" Project="" Source="SgmlReader8.sln" Description="未转换">
+</Event></UpgradeLog>

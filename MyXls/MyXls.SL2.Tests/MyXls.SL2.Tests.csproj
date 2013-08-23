@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8ECD581E-9882-42F4-A27E-02752DC77F2E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyXls.SL2.Tests</RootNamespace>
+    <AssemblyName>MyXls.SL2.Tests</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.core, Version=2.2.9.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.2.9.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\MyXls Tests\BitsTests.cs">
+      <Link>BitsTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\BytesTests.cs">
+      <Link>BytesTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\CellTests.cs">
+      <Link>CellTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\ColumnInfoTests.cs">
+      <Link>ColumnInfoTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\CommandLineHelper.cs">
+      <Link>CommandLineHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\FontWeightTests.cs">
+      <Link>FontWeightTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\FormatTests.cs">
+      <Link>FormatTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\MyXlsTestFixture.cs">
+      <Link>MyXlsTestFixture.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\Ole2DocumentTests.cs">
+      <Link>Ole2DocumentTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\RIDTests.cs">
+      <Link>RIDTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\TestsConfig.cs">
+      <Link>TestsConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\WorksheetTests.cs">
+      <Link>WorksheetTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\XfTests.cs">
+      <Link>XfTests.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls Tests\XlsDocumentTests.cs">
+      <Link>XlsDocumentTests.cs</Link>
+    </Compile>
+    <Compile Include="SortedListTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyXls.SL2\MyXls.SL2.csproj">
+      <Project>{6279BC9E-88C2-41CA-83B0-214BEC0773FE}</Project>
+      <Name>MyXls.SL2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ReferenceFiles\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

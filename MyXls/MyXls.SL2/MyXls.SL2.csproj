@@ -1,0 +1,292 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6279BC9E-88C2-41CA-83B0-214BEC0773FE}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyXls.SL2</RootNamespace>
+    <AssemblyName>MyXls.SL2</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>false</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\MyXls\BIFF8.cs">
+      <Link>BIFF8.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\ByteUtil\Bits.cs">
+      <Link>ByteUtil\Bits.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\ByteUtil\Bytes.cs">
+      <Link>ByteUtil\Bytes.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\CachedBlockRow.cs">
+      <Link>CachedBlockRow.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Cell.cs">
+      <Link>Cell.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\CellCoordinate.cs">
+      <Link>CellCoordinate.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Cells.cs">
+      <Link>Cells.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\CellTypes.cs">
+      <Link>CellTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\CharacterSets.cs">
+      <Link>CharacterSets.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Color.cs">
+      <Link>Color.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Colors.cs">
+      <Link>Colors.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\ColumnInfo.cs">
+      <Link>ColumnInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\EscapementTypes.cs">
+      <Link>EscapementTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Font.cs">
+      <Link>Font.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\FontFamilies.cs">
+      <Link>FontFamilies.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Fonts.cs">
+      <Link>Fonts.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\FontWeight.cs">
+      <Link>FontWeight.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Format.cs">
+      <Link>Format.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Formats.cs">
+      <Link>Formats.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\FormulaRecord.cs">
+      <Link>FormulaRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\HorizontalAlignments.cs">
+      <Link>HorizontalAlignments.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\IXFTarget.cs">
+      <Link>IXFTarget.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\LineStyle.cs">
+      <Link>LineStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\MergeArea.cs">
+      <Link>MergeArea.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Directory.cs">
+      <Link>Ole2\Directory.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Header.cs">
+      <Link>Ole2\Header.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\DocumentSummaryInformationSection.cs">
+      <Link>Ole2\Metadata\DocumentSummaryInformationSection.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\Header.cs">
+      <Link>Ole2\Metadata\Header.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\MetadataStream.cs">
+      <Link>Ole2\Metadata\MetadataStream.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\OriginOperatingSystems.cs">
+      <Link>Ole2\Metadata\OriginOperatingSystems.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\OriginOperatingSystemVersions.cs">
+      <Link>Ole2\Metadata\OriginOperatingSystemVersions.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\Property.cs">
+      <Link>Ole2\Metadata\Property.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\PropertyList.cs">
+      <Link>Ole2\Metadata\PropertyList.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\Section.cs">
+      <Link>Ole2\Metadata\Section.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\SectionList.cs">
+      <Link>Ole2\Metadata\SectionList.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Metadata\SummaryInformationSection.cs">
+      <Link>Ole2\Metadata\SummaryInformationSection.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Msat.cs">
+      <Link>Ole2\Msat.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Ole2Document.cs">
+      <Link>Ole2\Ole2Document.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Sat.cs">
+      <Link>Ole2\Sat.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Ssat.cs">
+      <Link>Ole2\Ssat.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Stream.cs">
+      <Link>Ole2\Stream.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Ole2\Streams.cs">
+      <Link>Ole2\Streams.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Palette.cs">
+      <Link>Palette.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Record.cs">
+      <Link>Record.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\RID.cs">
+      <Link>RID.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Row.cs">
+      <Link>Row.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\RowBlocks.cs">
+      <Link>RowBlocks.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Rows.cs">
+      <Link>Rows.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\SharedStringTable.cs">
+      <Link>SharedStringTable.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\StandardFormats.cs">
+      <Link>StandardFormats.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Style.cs">
+      <Link>Style.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Styles.cs">
+      <Link>Styles.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\TextDirections.cs">
+      <Link>TextDirections.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\TextRotations.cs">
+      <Link>TextRotations.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\UnderlineTypes.cs">
+      <Link>UnderlineTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\UnicodeBytes.cs">
+      <Link>UnicodeBytes.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Util.cs">
+      <Link>Util.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\VerticalAlignments.cs">
+      <Link>VerticalAlignments.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Workbook.cs">
+      <Link>Workbook.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Worksheet.cs">
+      <Link>Worksheet.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\Worksheets.cs">
+      <Link>Worksheets.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\WorksheetTypes.cs">
+      <Link>WorksheetTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\WorksheetVisibilities.cs">
+      <Link>WorksheetVisibilities.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\XF.cs">
+      <Link>XF.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\XFs.cs">
+      <Link>XFs.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\XlsDocument.cs">
+      <Link>XlsDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\MyXls\XlsText.cs">
+      <Link>XlsText.cs</Link>
+    </Compile>
+    <Compile Include="ICloneable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortedList.cs" />
+    <Compile Include="SortedListEnumerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

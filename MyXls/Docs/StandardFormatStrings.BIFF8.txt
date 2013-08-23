@@ -1,0 +1,40 @@
+Standard/Built-in Excel Format Strings (may not be written)
+Taken from ExcelFileFormat.pdf Sec. 5.46 FORMAT
+
+Index Type Format string
+0 General General
+1 Decimal_1 0
+2 Decimal_2 0.00
+3 Decimal_3 #,##0
+4 Decimal_4 #,##0.00
+5 Currency_1 "$"#,##0_);("$"#,##0)
+6 Currency_2 "$"#,##0_);[Red]("$"#,##0)
+7 Currency_3 "$"#,##0.00_);("$"#,##0.00)
+8 Currency_4 "$"#,##0.00_);[Red]("$"#,##0.00)
+9 Percent_1 0%
+10 Percent_2 0.00%
+11 Scientific_1 0.00E+00
+12 Fraction_1 # ?/?
+13 Fraction_2 # ??/??
+14 Date_1 M/D/YY
+15 Date_2 D-MMM-YY
+16 Date_3 D-MMM
+17 Date_4 MMM-YY
+18 Time_1 h:mm AM/PM
+19 Time_2 h:mm:ss AM/PM
+20 Time_3 h:mm
+21 Time_4 h:mm:ss
+22 Date/Time M/D/YY h:mm
+37 Accounting_1 _(#,##0_);(#,##0)
+38 Accounting_2 _(#,##0_);[Red](#,##0)
+39 Accounting_3 _(#,##0.00_);(#,##0.00)
+40 Accounting_4 _(#,##0.00_);[Red](#,##0.00)
+41 Currency_5 _("$"* #,##0_);_("$"* (#,##0);_("$"* "-"_);_(@_)
+42 Currency_6 _(* #,##0_);_(* (#,##0);_(* "-"_);_(@_)
+43 Currency_7 _("$"* #,##0.00_);_("$"* (#,##0.00);_("$"* "-"??_);_(@_)
+44 Currency_8 _(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)
+45 Time_5 mm:ss
+46 Time_6 [h]:mm:ss
+47 Time_7 mm:ss.0
+48 Scientific_2 ##0.0E+0
+49 Text @

@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EDD56D48-75EC-47AA-B79D-F9D5F6C6FEB3}"
+	ProjectSection(SolutionItems) = preProject
+		Changelog.htm = Changelog.htm
+		Index.htm = Index.htm
+		ToDo.htm = ToDo.htm
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin", "bin", "{AFAD05FD-ABF9-4DA8-8C6D-361F28F3BCB7}"
+	ProjectSection(SolutionItems) = preProject
+		bin\nunit.core.dll = bin\nunit.core.dll
+		bin\nunit.framework.dll = bin\nunit.framework.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyXls", "MyXls\MyXls.csproj", "{38C03298-9CB0-4B20-8764-A7025819D9BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWeb", "TestWeb\TestWeb.csproj", "{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyXlsTests", "MyXls Tests\MyXlsTests.csproj", "{83B31176-8D58-4052-BB54-C56E66E40C71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38C03298-9CB0-4B20-8764-A7025819D9BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C03298-9CB0-4B20-8764-A7025819D9BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C03298-9CB0-4B20-8764-A7025819D9BB}.Debug|x86.ActiveCfg = Debug|x86
+		{38C03298-9CB0-4B20-8764-A7025819D9BB}.Debug|x86.Build.0 = Debug|x86
+		{38C03298-9CB0-4B20-8764-A7025819D9BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C03298-9CB0-4B20-8764-A7025819D9BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C03298-9CB0-4B20-8764-A7025819D9BB}.Release|x86.ActiveCfg = Release|x86
+		{38C03298-9CB0-4B20-8764-A7025819D9BB}.Release|x86.Build.0 = Release|x86
+		{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}.Debug|x86.ActiveCfg = Debug|x86
+		{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}.Debug|x86.Build.0 = Debug|x86
+		{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}.Release|x86.ActiveCfg = Release|x86
+		{F778A9C9-3F17-4067-96BF-FD36BF8C84F7}.Release|x86.Build.0 = Release|x86
+		{83B31176-8D58-4052-BB54-C56E66E40C71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B31176-8D58-4052-BB54-C56E66E40C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B31176-8D58-4052-BB54-C56E66E40C71}.Debug|x86.ActiveCfg = Debug|x86
+		{83B31176-8D58-4052-BB54-C56E66E40C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B31176-8D58-4052-BB54-C56E66E40C71}.Release|x86.ActiveCfg = Release|x86
+		{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}.Debug|x86.ActiveCfg = Debug|x86
+		{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}.Debug|x86.Build.0 = Debug|x86
+		{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}.Release|x86.ActiveCfg = Release|x86
+		{96BBF3C1-FB38-4C13-A75B-9683FC5C8C2E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

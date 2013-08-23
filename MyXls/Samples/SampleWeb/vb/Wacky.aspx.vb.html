@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>SampleWeb\vb\Wacky.aspx.vb</title>
+<style type="text/css">
+<!--
+body.hl	{ background-color:#ffffff; }
+pre.hl	{ color:#000000; background-color:#ffffff; font-size:10pt; font-family:Courier New;}
+.hl.num	{ color:#a900a9; }
+.hl.esc	{ color:#c42da8; }
+.hl.str	{ color:#ff0000; }
+.hl.dstr	{ color:#ff0000; }
+.hl.slc	{ color:#666666; font-style:italic; }
+.hl.com	{ color:#666666; font-style:italic; }
+.hl.dir	{ color:#00b800; }
+.hl.sym	{ color:#ff0000; }
+.hl.line	{ color:#666666; }
+.hl.mark	{ background-color:#ffffbb;}
+.hl.kwa	{ color:#0000ff; font-weight:bold; }
+.hl.kwb	{ color:#0000ff; }
+.hl.kwc	{ color:#ec7f15; }
+.hl.kwd	{ color:#000000; font-weight:bold; }
+//-->
+</style>
+</head>
+<body class="hl">
+<pre class="hl">Imports org.in2bits.MyXls
+
+Partial Class vb_Wacky
+    Inherits System.Web.UI.Page
+
+    Protected Overrides <span class="hl kwa">Sub</span> <span class="hl kwd">OnLoad</span><span class="hl sym">(</span><span class="hl kwa">ByVal</span> e <span class="hl kwa">As</span> System.EventArgs<span class="hl sym">)</span>
+        <span class="hl kwa">Dim</span> xls <span class="hl kwa">As New</span> XlsDocument
+        xls.FileName <span class="hl sym">=</span> <span class="hl str">&quot;Wacky.xls&quot;</span>
+
+        <span class="hl slc">'Add some metadata (visible from Excel under File -&gt; Properties)</span>
+        xls.SummaryInformation.Author <span class="hl sym">=</span> <span class="hl str">&quot;Tim Erickson&quot;</span> <span class="hl slc">'let them know who's responsible!</span>
+        xls.SummaryInformation.Subject <span class="hl sym">=</span> <span class="hl str">&quot;A wacky display of Excel file generation&quot;</span>
+        xls.DocumentSummaryInformation.Company <span class="hl sym">=</span> <span class="hl str">&quot;in2bits.org&quot;</span>
+
+        <span class="hl kwa">Dim</span> sheetNumber <span class="hl kwa">As</span> <span class="hl kwb">Integer</span>
+        <span class="hl kwa">For</span> sheetNumber <span class="hl sym">=</span> <span class="hl num">1</span> <span class="hl kwa">To</span> <span class="hl num">5</span>
+            <span class="hl kwa">Dim</span> sheetName <span class="hl kwa">As</span> <span class="hl kwb">String</span> <span class="hl sym">=</span> <span class="hl str">&quot;Sheet &quot;</span> <span class="hl sym">&amp;</span> sheetNumber
+            <span class="hl kwa">Dim</span> rowMin <span class="hl kwa">As</span> <span class="hl kwb">Integer</span> <span class="hl sym">=</span> sheetNumber
+            <span class="hl kwa">Dim</span> rowCount <span class="hl kwa">As</span> <span class="hl kwb">Integer</span> <span class="hl sym">=</span> sheetNumber <span class="hl sym">+</span> <span class="hl num">10</span>
+            <span class="hl kwa">Dim</span> colMin <span class="hl kwa">As</span> <span class="hl kwb">Integer</span> <span class="hl sym">=</span> sheetNumber
+            <span class="hl kwa">Dim</span> colCount <span class="hl kwa">As</span> <span class="hl kwb">Integer</span> <span class="hl sym">=</span> sheetNumber <span class="hl sym">+</span> <span class="hl num">10</span>
+            <span class="hl kwa">Dim</span> sheet <span class="hl kwa">As</span> Worksheet <span class="hl sym">=</span> xls.Workbook.Worksheets.<span class="hl kwd">AddNamed</span><span class="hl sym">(</span>sheetName<span class="hl sym">)</span>
+            <span class="hl kwa">Dim</span> cells <span class="hl kwa">As</span> Cells <span class="hl sym">=</span> sheet.Cells
+            <span class="hl kwa">Dim</span> r <span class="hl kwa">As</span> <span class="hl kwb">Integer</span>
+            <span class="hl kwa">For</span> r <span class="hl sym">=</span> <span class="hl num">0</span> <span class="hl kwa">To</span> rowCount
+                <span class="hl kwa">If</span> <span class="hl sym">(</span>r <span class="hl sym">=</span> <span class="hl num">0</span><span class="hl sym">)</span> <span class="hl kwa">Then</span>
+                    <span class="hl kwa">Dim</span> c <span class="hl kwa">As</span> <span class="hl kwb">Integer</span>
+                    <span class="hl kwa">For</span> c <span class="hl sym">=</span> <span class="hl num">0</span> <span class="hl kwa">To</span> colCount
+                        cells.<span class="hl kwd">Add</span><span class="hl sym">(</span>rowMin <span class="hl sym">+</span> r<span class="hl sym">,</span> colMin <span class="hl sym">+</span> c<span class="hl sym">,</span> <span class="hl str">&quot;Fld&quot;</span> <span class="hl sym">&amp; (</span>c <span class="hl sym">+</span> <span class="hl num">1</span><span class="hl sym">))</span>.Font.Bold <span class="hl sym">=</span> <span class="hl kwa">True</span>
+                    <span class="hl kwa">Next</span>
+                <span class="hl kwa">Else</span>
+                    <span class="hl kwa">Dim</span> c <span class="hl kwa">As</span> <span class="hl kwb">Integer</span>
+                    <span class="hl kwa">For</span> c <span class="hl sym">=</span> <span class="hl num">0</span> <span class="hl kwa">To</span> colCount
+                        <span class="hl kwa">Dim</span> val <span class="hl kwa">As</span> <span class="hl kwb">Integer</span> <span class="hl sym">=</span> r <span class="hl sym">+</span> c
+                        <span class="hl kwa">Dim</span> cell <span class="hl kwa">As</span> Cell <span class="hl sym">=</span> cells.<span class="hl kwd">Add</span><span class="hl sym">(</span>rowMin <span class="hl sym">+</span> r<span class="hl sym">,</span> colMin <span class="hl sym">+</span> c<span class="hl sym">,</span> val<span class="hl sym">)</span>
+                        <span class="hl kwa">If Not</span> <span class="hl sym">((</span>val Mod <span class="hl num">2</span><span class="hl sym">) =</span> <span class="hl num">0</span><span class="hl sym">)</span> <span class="hl kwa">Then</span>
+                            cell.Font.FontName <span class="hl sym">=</span> <span class="hl str">&quot;Times New Roman&quot;</span>
+                            cell.Font.Underline <span class="hl sym">=</span> UnderlineTypes.<span class="hl kwb">Double</span>
+                            cell.Rotation <span class="hl sym">=</span> <span class="hl num">45</span>
+                        <span class="hl kwa">End If</span>
+                    <span class="hl kwa">Next</span>
+                <span class="hl kwa">End If</span>
+            <span class="hl kwa">Next</span>
+        <span class="hl kwa">Next</span>
+
+        xls.<span class="hl kwd">Send</span><span class="hl sym">()</span>
+    <span class="hl kwa">End Sub</span>
+<span class="hl kwa">End</span> Class
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 2.6.5, http://www.andre-simon.de/-->

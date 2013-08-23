@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyXls.master.cs" Inherits="MyXlsWeb.MyXls" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>MyXls Project - in2bits.org</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="Keywords" content="create excel,write excel,generate excel,excel,asp,ole2,c#,vb,.net,biff,biff8,xls,in2bits.org,in2words.org,sourceforge,poi,open source,free,download" />
+	<meta name="Description" content="Writes/generates native Excel files quickly and easily via .NET (C#, VB, etc.), including formatting and multiple sheets. Output Excel files for ASP.NET sites or .NET applications. Doesn't require Excel on the server or any licensing. Compatible with Excel versions 97 - 2007." />
+	<link rel="stylesheet" type="text/css" href="myxls.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="float:left;">
+            <img src="images/MyXlsBanner.png" alt="MyXls Logo Banner" />
+        </div>
+	    <div id="menu">
+		    <ul>
+			    <li>Home</li>
+			    <li>About</li>
+			    <li>Downloads</li>
+			    <li><a href="/help/index.html">Documentation</a></li>
+			    <li>Examples</li>
+			    <li>FAQ</li>
+		    </ul>
+	    </div>
+	    <div class="content" id="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+	    </div>
+	    <div id="footer">
+		    Copyright &copy; 2008
+            <div id="sfstamp">
+                <a  href="http://sourceforge.net/">
+	                <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=205384&amp;type=1" width="88" height="31" style="border:0;" alt="SourceForge.net Logo" />
+                </a>
+            </div>
+	    </div>
+    </form>
+</body>
+</html>

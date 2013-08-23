@@ -1,0 +1,22 @@
+﻿<%@ Master Language="VB" CodeFile="SampleWeb.master.vb" Inherits="SampleWeb" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>MyXls Examples - in2bits.org</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="Keywords" content="create excel,write excel,generate excel,excel,asp,ole2,c#,vb,.net,biff,biff8,xls,in2bits.org,in2words.org,sourceforge,poi,open source,free,download" />
+	<meta name="Description" content="MyXls Examples - create multiple sheets, formatted cells, locked cells, metadata information, etc." />
+	<link rel="stylesheet" type="text/css" href="css/samples.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <a href="/"><img src="images/MyXlsLogo.png" alt="MyXls Logo"/></a>
+    <div>
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+        </asp:contentplaceholder>
+    </div>
+    </form>
+</body>
+</html>
