@@ -1,0 +1,46 @@
+Hello All
+Details
+I am making window software using geckofx browser as per me there is way to do your work in faster manner using geckofx(mozilla)browser
+1) there three web page 1)log in page 2) student information 3)student personal information
+2)i have accessed all control avalable on geckoFX browser
+Now Problem is
+the code is
+for first page
+Collapse | Copy Code
+
+void login(object sebder , eventarg e)
+{
+geckoinputelement username = new geckoinputelement(geckowebbrowser1.document.getelementByName("username")[0].Domobject);
+ 
+ username.Value = textcontrol.Text;
+geckoinputelement password = new geckoinputelement(geckowebbrowser1.document.getelementByName("password")[0].Domobject);
+username.Value = passwordcontrol.Text;
+geckoinputelement submit = new geckoinputelement(geckowebbrowser1.document.getelementByName("Submit")[0].Domobject);
+submit.click();
+}
+ss
+for second page
+Collapse | Copy Code
+
+void student_information(object sebder , eventarg e)
+{
+ // some code that fill the date on web page like first 
+}
+dddd
+for thrid page
+Collapse | Copy Code
+
+void student_personal_information(object sebder , eventarg e)
+{
+// some code that fill the date on web page like first
+}
+
+I want to user only see that the work is going properly user will do nothing in process
+i want when the page gets loaded method work by itself there three url
+1)htttp://www.shools.com/login.html
+2)htttp://www.shools.com/student.html
+3)htttp://www.shools.com/studentspersonal.html
+how it can be done, the page gets loaded and methods run by itself
+ 
+
+please do fast 

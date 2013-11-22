@@ -1,0 +1,1203 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+          <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+    <title>XPCOM API Reference | MDN</title>
+
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+                  <!--[if !IE 6]><!-->
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=54ef076" />
+              <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=54ef076" />
+            <!--<![endif]-->
+      <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/ie.css" /><![endif]-->
+      <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/ie7.css" /><![endif]-->
+      <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/ie6.css" /><![endif]-->
+      <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/css/libs/font-awesome/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css" />
+      <link rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
+
+      <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+      
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=54ef076" />
+              <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+        
+
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.mozilla.org/https://developer.cdn.mozilla.net/media/js/libs/html5.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript">
+  // This represents the site configuration
+  window.mdn = {
+    build: '54ef076',
+    // Properties and settings for CKEditor will go here
+    ckeditor: {},
+    // Feature test results and methods will be placed here
+    features: {},
+    // Ensures gettext always returns something, is always set
+    gettext: function(x) { return x; },
+    // The path to media (images, CSS, JS) in MDN
+    mediaPath: 'https://developer.cdn.mozilla.net/media/',
+    // Wiki-specific settings will be placed here
+    wiki: {
+      autosuggestTitleUrl: '/en-US/docs/get-documents'
+    }
+  };
+</script>
+    <link rel="alternate" type="application/json" href="/en-US/docs/XPCOM_API_Reference$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/XPCOM_API_Reference" />
+
+  <meta property="og:title" content="XPCOM API Reference" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/XPCOM_API_Reference" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/XPCOM_API_Reference" />
+  <meta name="twitter:title" content="XPCOM API Reference" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+    <meta property="og:description" content="This reference describes the frozen interfaces and functions provided by the XPCOM library. It also details the helper classes and functions provided by the XPCOM glue library. This reference is oriented toward extension authors and embedders of XPCOM."/>
+  <meta name="description" content="This reference describes the frozen interfaces and functions provided by the XPCOM library. It also details the helper classes and functions provided by the XPCOM glue library. This reference is oriented toward extension authors and embedders of XPCOM." />
+  <meta name="twitter:description" content="This reference describes the frozen interfaces and functions provided by the XPCOM library. It also details the helper classes and functions provided by the XPCOM glue library. This reference is oriented toward extension authors and embedders of XPCOM." />
+  
+
+      <script type="text/javascript">
+  // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+  var removeUtms  =   function(){
+      var l = window.location;
+      if( l.hash.indexOf( "utm" ) != -1 ){
+          if( window.history.replaceState ){
+              history.replaceState({},'', l.pathname + l.search);
+          } else {
+              l.hash = "";
+          }
+      };
+  };
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5'],
+            ['_setAllowAnchor', true],
+                ['_trackPageview']);
+  _gaq.push( removeUtms );
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+  </head>
+
+<body id="" class="html-ltr document  " role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+
+<!-- temporary beta notice -->
+      <div class="redesign-beta-notice"><div class="wrap">
+      MDN is being redesigned! Want to help beta-test it? <a href="/en-US/users/login">(Sign up for and) sign in to your MDN account</a>, and then select <strong>Beta user</strong> in your profile.
+    </div></div>
+  
+
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+                  <li><a href="#q">Skip to search</a></li>
+                <li><a href="#content">Skip to main content</a></li>
+      </ul>
+
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/docs/Accessibility?menu">Accessibility</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps"><a href="https://marketplace.firefox.com/developers/?menu">Make<br /><em>Apps</em></a>
+            </li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      
+            <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/XPCOM_API_Reference"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                
+                  <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                      <div class="browserid-info sub-menu" aria-hidden="true">
+                    <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>              <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+            </div>
+                  
+      </form>
+    </li>
+  </ul>
+
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+      
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+      
+  
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=10552">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=10552">Clone this page</a></li>
+                              
+                    
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/ja/docs/XPCOM_API_Reference" title="XPCOM API Reference">日本語</a></li>
+                      <li><a rel="internal" href="/pl/docs/Dokumentacja_API_XPCOM" title="Dokumentacja API XPCOM">Polski</a></li>
+                      <li><a rel="internal" href="/ru/docs/%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D0%B8%D0%BA_%D0%BF%D0%BE_XPCOM_API" title="Справочник по XPCOM API">Русский</a></li>
+          
+                      <li><a href="/en-US/docs/XPCOM_API_Reference$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+            <li class="crumb">XPCOM API Reference</li>
+    </ol>
+  </nav>
+
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main"
+          data-current-revision="483957"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">XPCOM API Reference</h1>
+                        <div class="offline-notice">
+              <a href="javascript:;" id="offline-notice-link"><i aria-hidden="true" class="icon-book"></i>Read content offline</a>
+            </div>
+
+            <div id="offline-dialog-content" title="Read MDN Offline">
+              <p>Did you know that you can read content offline by using one of these tools? If you would like to read offline MDN content in another format, let us know by commenting on <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=665750" data-title="Bug 665750">Bug 665750</a>.</p>
+              <a href="http://kapeli.com/dash?ref=mdn" class="offline-dialog-mac" data-title="Dash App">
+                <img src="https://developer.mozilla.org/media/img/dash-app.png" alt="Dash App" />
+              </a>
+              <a href="http://zealdocs.org" target="_blank" class="offline-dialog-others" data-title="Zeal">
+                <i aria-hidden="true" class="icon-book" style="font-size: 160px;"></i>
+              </a>
+            </div>
+
+                                </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/XPCOM_API_Reference$history"><i aria-hidden="true" class="icon-book"></i>History</a></li>
+            
+                                                                      <li class="page-edit"><a href="/en-US/docs/XPCOM_API_Reference$edit"><i aria-hidden="true" class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+       
+                        <div class="warning review-technical"><p>This article is in need of a technical review.</p></div>
+                            
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <li><ol><li><a href="#Overview" rel="internal">Overview</a><code></code><li><a href="#Frozen_Components" rel="internal">Return values</a><code></code><code></code><code></code><li><a href="#Frozen_Components" rel="internal">Frozen Components</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Frozen_Functions" rel="internal">Frozen Functions</a><ol><li><a href="#Core_Functions" rel="internal">Core Functions</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#String_Functions" rel="internal">String Functions</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#Frozen_Interfaces" rel="internal">Frozen Interfaces</a><ol><li><a href="#Core" rel="internal">Core</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Files_and_Directories" rel="internal">Files and Directories</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Streams" rel="internal">Streams</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Primitives" rel="internal">Primitives</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code></ol></li><li><a href="#XPCOM_.22Glue.22_Classes_and_Functions" rel="internal">XPCOM "Glue" Classes and Functions</a><ol><li><a href="#Core_2" rel="internal">Core</a><code></code><code></code><code></code><li><a href="#String" rel="internal">String</a><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Thread Synchronization" rel="internal">Thread Synchronization</a></ol></li><li><a href="#Original_Document_Information" rel="internal">Original Document Information</a></ol></li>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i aria-hidden="true" class="icon-tags"></i><a href="#document-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i aria-hidden="true" class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <div class="note">
+ <p>This page is the new home of the XPCOM Reference that we are migrating from <a class="external" href="/xpcom/api" title="xpcom/api">here</a>. If you are inclined to help with this migration, your help would be very much appreciated.</p>
+ <p>There may also be additional information located in <a class="external" href="http://www.mozilla.org/projects/xpcom/book/cxc/html/appB.html">Creating XPCOM Components Appendix B</a>; it is unclear how much of the documentation in <abbr title="Creating XPCOM Components">CXC</abbr> overlaps with that from the to-be-migrated XPCOM reference mentioned in the last paragraph.</p>
+ <p>Please see the <a href="/Talk:en/XPCOM_API_Reference" title="Talk:en/XPCOM_API_Reference">talk page</a> for information about available templates and categories you should use when creating / editing pages.</p>
+</div>
+<h3 id="Overview" name="Overview">Overview</h3>
+<p>This reference describes the <a href="/en/Interfaces/About_Frozen_Interfaces" title="en/Interfaces/About_Frozen_Interfaces">frozen</a> interfaces and functions provided by the <a href="/en/XPCOM" title="en/XPCOM">XPCOM</a> library. It also details the helper classes and functions provided by the <a href="/en/XPCOM_Glue" title="en/XPCOM_Glue">XPCOM glue</a> library. This reference is oriented toward extension authors and embedders of XPCOM.</p>
+<div class="note">
+ <p><strong>Note:</strong> If you are working on a module in the Mozilla codebase that is compiled with <code>MOZILLA_INTERNAL_API</code>, then some of these APIs--the string functions and classes in particular--may differ significantly from what you should use. See the <a href="/En/Mozilla_internal_string_guide" title="En/Mozilla_internal_string_guide">XPCOM string guide</a> for documentation on the string API used internally within the Mozilla codebase.</p>
+</div>
+<h3 id="Frozen_Components" name="Frozen_Components">Return values</h3>
+<p>The return value of many XPCOM related functions is an <a href="/en-US/docs/XPCOM_API_Reference/nsresult" title="/en-US/docs/XPCOM_API_Reference/nsresult"><code>nsresult</code></a>; in the past (before Gecko 19 (Firefox 19.0 / Thunderbird 19.0 / SeaMonkey 2.16)), this was just an integer that happened to take on a set of specified error codes (when used correctly). Now it's a strongly-typed <code>enum</code> when compiling using a C++11 compiler; this causes compile-time errors to occur when improper values are returned as <code>nsresult</code>s, which will make it easier to catch many bugs.</p>
+<h3 id="Frozen_Components" name="Frozen_Components">Frozen Components</h3>
+<p>These components may be accessed using the XPCOM Component Manager or Service Manager.</p>
+<dl>
+ <dt>
+  <code><a class="new" href="/en-US/docs/XPCOM_Interface_Reference/nsCategoryManager" title="">nsCategoryManager</a></code></dt>
+ <dd>
+  The XPCOM Category Manager.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a class="new" href="/en-US/docs/XPCOM_Interface_Reference/nsDirectoryService" title="">nsDirectoryService</a></code></dt>
+ <dd>
+  The XPCOM Directory Service.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a class="new" href="/en-US/docs/XPCOM_Interface_Reference/nsLocalFile" title="">nsLocalFile</a></code></dt>
+ <dd>
+  A component implementing <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsILocalFile" title="">nsILocalFile</a></code>.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsObserverService" title="">nsObserverService</a></code></dt>
+ <dd>
+  The XPCOM Observer Service.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a class="new" href="/en-US/docs/XPCOM_Interface_Reference/nsScriptableInputStream" title="">nsScriptableInputStream</a></code></dt>
+ <dd>
+  A component implementing <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIScriptableInputStream" title="">nsIScriptableInputStream</a></code>.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/XPCOM_primitive" title="en/XPCOM_primitive">XPCOM primitive</a> components</dt>
+ <dd>
+  These components implement scriptable objects that "box" values of simple XPCOM types. They implement these interfaces: <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsCString" title="">nsISupportsCString</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsChar" title="">nsISupportsChar</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsDouble" title="">nsISupportsDouble</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsFloat" title="">nsISupportsFloat</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsID" title="">nsISupportsID</a></code>, <code><a class="new" href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsInterface" title="">nsISupportsInterface</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRBool" title="">nsISupportsPRBool</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRInt16" title="">nsISupportsPRInt16</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRInt32" title="">nsISupportsPRInt32</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRInt64" title="">nsISupportsPRInt64</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRTime" title="">nsISupportsPRTime</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRUint16" title="">nsISupportsPRUint16</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRUint32" title="">nsISupportsPRUint32</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRUint64" title="">nsISupportsPRUint64</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRUint8" title="">nsISupportsPRUint8</a></code>, <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsString" title="">nsISupportsString</a></code>, and <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsVoid" title="">nsISupportsVoid</a></code>.</dd>
+</dl>
+<h3 id="Frozen_Functions" name="Frozen_Functions">Frozen Functions</h3>
+<p>These functions are exported from the XPCOM shared library.</p>
+<h4 id="Core_Functions" name="Core_Functions">Core Functions</h4>
+<dl>
+ <dt>
+  <a href="/en/NS_InitXPCOM2" title="en/NS_InitXPCOM2">NS_InitXPCOM2</a></dt>
+ <dd>
+  The <code>NS_InitXPCOM2</code> function initiates use of XPCOM in the calling process.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_InitXPCOM3" title="en/NS_InitXPCOM3">NS_InitXPCOM3</a></dt>
+ <dd>
+  The <code>NS_InitXPCOM3</code> function initiates use of XPCOM in the calling process with support for statically defined XPCOM modules.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_ShutdownXPCOM" title="en/NS_ShutdownXPCOM">NS_ShutdownXPCOM</a></dt>
+ <dd>
+  The <code>NS_ShutdownXPCOM</code> function terminates use of XPCOM in the calling process.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_GetComponentManager" title="en/NS_GetComponentManager">NS_GetComponentManager</a></dt>
+ <dd>
+  The <code>NS_GetComponentManager</code> function returns a reference to the XPCOM Component Manager.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_GetComponentRegistrar" title="en/NS_GetComponentRegistrar">NS_GetComponentRegistrar</a></dt>
+ <dd>
+  The <code>NS_GetComponentRegistrar</code> function returns a reference to the XPCOM Component Registrar.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_GetServiceManager" title="en/NS_GetServiceManager">NS_GetServiceManager</a></dt>
+ <dd>
+  The <code>NS_GetServiceManager</code> function returns a reference to the XPCOM Service Manager.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_GetMemoryManager" title="en/NS_GetMemoryManager">NS_GetMemoryManager</a></dt>
+ <dd>
+  The <code>NS_GetMemoryManager</code> function returns a reference to the XPCOM Memory Manager.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_NewLocalFile" title="en/NS_NewLocalFile">NS_NewLocalFile</a></dt>
+ <dd>
+  The <code>NS_NewLocalFile</code> function creates an instance of <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsILocalFile" title="">nsILocalFile</a></code> that provides a platform independent representation of a file path.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_NewNativeLocalFile" title="en/NS_NewNativeLocalFile">NS_NewNativeLocalFile</a></dt>
+ <dd>
+  The <code>NS_NewNativeLocalFile</code> function creates an instance of <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsILocalFile" title="">nsILocalFile</a></code> that provides a platform independent representation of a file path. You should avoid using this function if you're not 100% certain that the full file path (not just a leaf) involved is always ASCII.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_Alloc" title="en/NS_Alloc">NS_Alloc</a></dt>
+ <dd>
+  Allocates a block of memory using the XPCOM Memory Manager.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_Realloc" title="en/NS_Realloc">NS_Realloc</a></dt>
+ <dd>
+  Reallocates a block of memory using the XPCOM Memory Manager.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_Free" title="en/NS_Free">NS_Free</a></dt>
+ <dd>
+  Frees a block of memory using the XPCOM Memory Manager.</dd>
+</dl>
+<h4 id="String_Functions" name="String_Functions">String Functions</h4>
+<p>These are the low-level "string" APIs provided by XPCOM as part of its frozen API. It is often better to use one of the <a href="#String">string classes</a> instead of using these functions directly.</p>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringContainerInit" title="en/NS_CStringContainerInit">NS_CStringContainerInit</a></dt>
+ <dd>
+  The <code>NS_CStringContainerInit</code> function initializes a <code>nsCStringContainer</code> instance for use as a <code>nsACString</code>.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringContainerInit2" title="en/NS_CStringContainerInit2">NS_CStringContainerInit2</a></dt>
+ <dd>
+  The <code>NS_CStringContainerInit2</code> function initializes a <code>nsCStringContainer</code> instance for use as a <code>nsACString</code>.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringContainerFinish" title="en/NS_CStringContainerFinish">NS_CStringContainerFinish</a></dt>
+ <dd>
+  The <code>NS_CStringContainerFinish</code> function releases any memory allocated by a <code>nsCStringContainer</code> instance.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringGetData" title="en/NS_CStringGetData">NS_CStringGetData</a></dt>
+ <dd>
+  The <code>NS_CStringGetData</code> function gives the caller read access to the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringGetMutableData" title="en/NS_CStringGetMutableData">NS_CStringGetMutableData</a></dt>
+ <dd>
+  The <code>NS_CStringGetDataMutable</code> function gives the caller write access to the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringSetData" title="en/NS_CStringSetData">NS_CStringSetData</a></dt>
+ <dd>
+  The <code>NS_CStringSetData</code> function copies data into the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringSetDataRange" title="en/NS_CStringSetDataRange">NS_CStringSetDataRange</a></dt>
+ <dd>
+  The <code>NS_CStringSetDataRange</code> function copies data into a section of the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringCopy" title="en/NS_CStringCopy">NS_CStringCopy</a></dt>
+ <dd>
+  The <code>NS_CStringCopy</code> function copies the value from one <code>nsACString</code> instance to another.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringAppendData" title="en/NS_CStringAppendData">NS_CStringAppendData</a></dt>
+ <dd>
+  The <code>NS_CStringAppendData</code> function appends data to the existing value of a <code>nsACString</code> instance.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringInsertData" title="en/NS_CStringInsertData">NS_CStringInsertData</a></dt>
+ <dd>
+  The <code>NS_CStringInsertData</code> function appends data to the existing value of a <code>nsACString</code> instance.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringCutData" title="en/NS_CStringCutData">NS_CStringCutData</a></dt>
+ <dd>
+  The <code>NS_CStringCutData</code> function removes a section of the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringCloneData" title="en/NS_CStringCloneData">NS_CStringCloneData</a></dt>
+ <dd>
+  The <code>NS_CStringCloneData</code> function returns a null-terminated, heap allocated copy of the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringContainerInit" title="en/NS_StringContainerInit">NS_StringContainerInit</a></dt>
+ <dd>
+  The <code>NS_StringContainerInit</code> function initializes a <code>nsStringContainer</code> instance for use as a <code>nsAString</code>.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringContainerInit2" title="en/NS_StringContainerInit2">NS_StringContainerInit2</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringContainerFinish" title="en/NS_StringContainerFinish">NS_StringContainerFinish</a></dt>
+ <dd>
+  The <code>NS_StringContainerFinish</code> function releases any memory allocated by a <code>nsStringContainer</code> instance.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringGetData" title="en/NS_StringGetData">NS_StringGetData</a></dt>
+ <dd>
+  The <code>NS_StringGetData</code> function gives the caller access to the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringGetMutableData" title="en/NS_StringGetMutableData">NS_StringGetMutableData</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringSetData" title="en/NS_StringSetData">NS_StringSetData</a></dt>
+ <dd>
+  The <code>NS_StringSetData</code> function copies data into the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringSetDataRange" title="en/NS_StringSetDataRange">NS_StringSetDataRange</a></dt>
+ <dd>
+  The <code>NS_StringSetDataRange</code> function copies data into a section of the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringCopy" title="en/NS_StringCopy">NS_StringCopy</a></dt>
+ <dd>
+  The <code>NS_StringCopy</code> function copies the value from one <code>nsAString</code> instance to another.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringAppendData" title="en/NS_StringAppendData">NS_StringAppendData</a></dt>
+ <dd>
+  The <code>NS_StringAppendData</code> function appends data to the existing value of a <code>nsAString</code> instance.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringInsertData" title="en/NS_StringInsertData">NS_StringInsertData</a></dt>
+ <dd>
+  The <code>NS_StringInsertData</code> function appends data to the existing value of a <code>nsACString</code> instance.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringCutData" title="en/NS_StringCutData">NS_StringCutData</a></dt>
+ <dd>
+  The <code>NS_StringCutData</code> function removes a section of the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_StringCloneData" title="en/NS_StringCloneData">NS_StringCloneData</a></dt>
+ <dd>
+  The <code>NS_StringCloneData</code> function returns a null-terminated, heap allocated copy of the string's internal buffer.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_CStringToUTF16" title="en/NS_CStringToUTF16">NS_CStringToUTF16</a></dt>
+ <dd>
+  The <code>NS_CStringToUTF16</code> function converts the value of a <code>nsACString</code> instance to UTF-16 and stores the result in a <code>nsAString</code> instance.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_UTF16ToCString" title="en/NS_UTF16ToCString">NS_UTF16ToCString</a></dt>
+ <dd>
+  The <code>NS_UTF16ToCString</code> function converts the value of a <code>nsAString</code> instance from UTF-16 to the specified multi-byte encoding and stores the result in a <code>nsACString</code> instance.</dd>
+</dl>
+<h3 id="Frozen_Interfaces" name="Frozen_Interfaces">Frozen Interfaces</h3>
+<h4 id="Core" name="Core">Core</h4>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsICategoryManager" title="">nsICategoryManager</a></code></dt>
+ <dd>
+  The <code>nsICategoryManager</code> interface provides access to a data structure that holds a list of name-value pairs, called categories, where each value is a list of strings.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a class="new" href="/en-US/docs/XPCOM_Interface_Reference/nsIClassInfo" title="">nsIClassInfo</a></code></dt>
+ <dd>
+  The <code>nsIClassInfo</code> interface provides information about a specific implementation class.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIComponentManager" title="">nsIComponentManager</a></code></dt>
+ <dd>
+  The <code>nsIComponentManager</code> interface provides methods to access factory objects and instantiate instances of classes.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIComponentRegistrar" title="">nsIComponentRegistrar</a></code></dt>
+ <dd>
+  The <code>nsIComponentRegistrar</code> interface provides methods to access and modify the XPCOM component registry.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIFactory" title="">nsIFactory</a></code></dt>
+ <dd>
+  The <code>nsIFactory</code> interface allows for the creation of <code>nsISupports</code> derived classes without specifying a concrete class type.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIInterfaceRequestor" title="">nsIInterfaceRequestor</a></code></dt>
+ <dd>
+  The <code>nsIInterfaceRequestor</code> interface defines a generic interface for requesting interfaces that a given object might provide access to.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIModule" title="">nsIModule</a></code></dt>
+ <dd>
+  The <code>nsIModule</code> interface must be implemented by each XPCOM component. It is the main entry point by which the system accesses an XPCOM component.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIMemory" title="">nsIMemory</a></code></dt>
+ <dd>
+  The <code>nsIMemory</code> interface represents a generic memory allocator.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIObserver" title="">nsIObserver</a></code></dt>
+ <dd>
+  The <code>nsIObserver</code> interface is a generic notification callback interface that is typically used in conjunction with <code>nsIObserverService</code>.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIObserverService" title="">nsIObserverService</a></code></dt>
+ <dd>
+  The <code>nsIObserverService</code> interface provides methods to add, remove, notify, and enumerate observers of various notifications.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIProgrammingLanguage" title="">nsIProgrammingLanguage</a></code></dt>
+ <dd>
+  The <code>nsIProgrammingLanguage</code> interface provides an enumeration of programming language identifiers.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIProperties" title="">nsIProperties</a></code></dt>
+ <dd>
+  The <code>nsIProperties</code> interface provides methods to access a map of named XPCOM object values.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIServiceManager" title="">nsIServiceManager</a></code></dt>
+ <dd>
+  The <code>nsIServiceManager</code> manager interface provides a means to obtain global services in an application.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISimpleEnumerator" title="">nsISimpleEnumerator</a></code></dt>
+ <dd>
+  The <code>nsISimpleEnumerator</code> interface represents an enumeration of XPCOM objects and provides methods to access elements sequentially.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupports" title="">nsISupports</a></code></dt>
+ <dd>
+  All XPCOM interfaces inherit the <code>nsISupports</code> interface.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsWeakReference" title="">nsISupportsWeakReference</a></code></dt>
+ <dd>
+  The <code>nsISupportsWeakReference</code> interface is a factory interface, which produces appropriate instances of <code>nsIWeakReference</code>.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIWeakReference" title="">nsIWeakReference</a></code></dt>
+ <dd>
+  The <code>nsIWeakReference</code> interface represents a proxy for an XPCOM object. It allows a consumer to hold an indirect, non-owning reference to an XPCOM object.</dd>
+</dl>
+<h4 id="Files_and_Directories" name="Files_and_Directories">Files and Directories</h4>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIFile" title="">nsIFile</a></code></dt>
+ <dd>
+  The <code>nsIFile</code> interface represents a file or directory location in a platform-independent manner.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsILocalFile" title="">nsILocalFile</a></code></dt>
+ <dd>
+  The <code>nsILocalFile</code> interface represents a file or directory location in a platform-independent manner that is accessible on the local filesystem. It extends nsIFile.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIDirectoryService" title="">nsIDirectoryService</a></code></dt>
+ <dd>
+  The <code>nsIDirectoryService</code> interface provides methods to initialize and configure a directory service instance.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIDirectoryServiceProvider" title="">nsIDirectoryServiceProvider</a></code></dt>
+ <dd>
+  The <code>nsIDirectoryServiceProvider</code> interface is used by the Directory Service to get file locations.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIDirectoryServiceProvider2" title="">nsIDirectoryServiceProvider2</a></code></dt>
+ <dd>
+  The <code>nsIDirectoryServiceProvider2</code> interface is used by the Directory Service to get an enumeration of file locations.</dd>
+</dl>
+<h4 id="Streams" name="Streams">Streams</h4>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIInputStream" title="">nsIInputStream</a></code></dt>
+ <dd>
+  The <code>nsIInputStream</code> interface represents a readable data source.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIOutputStream" title="">nsIOutputStream</a></code></dt>
+ <dd>
+  The <code>nsIOutputStream</code> interface represents a writable data sink.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsIScriptableInputStream" title="">nsIScriptableInputStream</a></code></dt>
+ <dd>
+  The <code>nsIScriptableInputStream</code> interface provides scriptable access to a <code>nsIInputStream</code> instance.</dd>
+</dl>
+<h4 id="Primitives" name="Primitives">Primitives</h4>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPrimitive" title="">nsISupportsPrimitive</a></code></dt>
+ <dd>
+  The <code>nsISupportsPrimitive</code> interface serves as a base interface for all of the <code>nsISupports*</code> family of interfaces.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRBool" title="">nsISupportsPRBool</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRBool</code> interface provides scriptable access for boolean values.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsChar" title="">nsISupportsChar</a></code></dt>
+ <dd>
+  The <code>nsISupportsChar</code> interface provides scriptable access for single character values (often used to store an ASCII character).</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRInt16" title="">nsISupportsPRInt16</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRInt16</code> interface provides scriptable access for 16-bit signed integers.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRInt32" title="">nsISupportsPRInt32</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRInt32</code> interface provides scriptable access for 32-bit signed integers.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRInt64" title="">nsISupportsPRInt64</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRInt64</code> interface provides scriptable access for 64-bit signed integers.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRUint16" title="">nsISupportsPRUint16</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRUint16</code> interface provides scriptable access for 16-bit unsigned integers.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRUint32" title="">nsISupportsPRUint32</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRUint32</code> interface provides scriptable access for 32-bit unsigned integers.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRUint64" title="">nsISupportsPRUint64</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRUint64</code> interface provides scriptable access for 64-bit unsigned integers.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRUint8" title="">nsISupportsPRUint8</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRUint8</code> interface provides scriptable access for 8-bit unsigned integers.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsDouble" title="">nsISupportsDouble</a></code></dt>
+ <dd>
+  The <code>nsISupportsDouble</code> interface provides scriptable access for double-precision floating-point values.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsFloat" title="">nsISupportsFloat</a></code></dt>
+ <dd>
+  The <code>nsISupportsFloat</code> interface provides scriptable access for single-precision floating-point values.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsPRTime" title="">nsISupportsPRTime</a></code></dt>
+ <dd>
+  The <code>nsISupportsPRTime</code> interface provides scriptable access for PRTime values.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsCString" title="">nsISupportsCString</a></code></dt>
+ <dd>
+  The <code>nsISupportsCString</code> interface provides scriptable access for ASCII character strings.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsString" title="">nsISupportsString</a></code></dt>
+ <dd>
+  The <code>nsISupportsString</code> interface provides scriptable access for Unicode character strings.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsVoid" title="">nsISupportsVoid</a></code></dt>
+ <dd>
+  The <code>nsISupportsVoid</code> interface provides scriptable access for generic pointer values.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsID" title="">nsISupportsID</a></code></dt>
+ <dd>
+  The <code>nsISupportsID</code> interface provides scriptable access for boolean values.</dd>
+</dl>
+<dl>
+ <dt>
+  <code><a href="/en-US/docs/XPCOM_Interface_Reference/nsISupportsInterfacePointer" title="">nsISupportsInterfacePointer</a></code></dt>
+ <dd>
+  The <code>nsISupportsInterfacePointer</code> interface provides scriptable access for XPCOM objects.</dd>
+</dl>
+<h3 id="XPCOM_.22Glue.22_Classes_and_Functions" name="XPCOM_.22Glue.22_Classes_and_Functions">XPCOM "Glue" Classes and Functions</h3>
+<p>These classes and functions are provided to simplify the use of XPCOM from C++. They are not part of the frozen XPCOM API, which means that they may evolve over time. When these classes are used by a component, it may be necessary to link the component against the XPCOM glue library.</p>
+<h4 id="Core_2" name="Core_2">Core</h4>
+<dl>
+ <dt>
+  <a href="/en/nsCOMPtr" title="en/nsCOMPtr">nsCOMPtr</a></dt>
+ <dd>
+  This utility class simplifies managing XPCOM interface references from C++ code.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsMemory" title="en/nsMemory">nsMemory</a></dt>
+ <dd>
+  The <code>nsMemory</code> class provides static helper routines to manage memory. These routines allow easy access to XPCOM's global <code>nsIMemory</code> implementation without having to go through the service manager to get it.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsSupportsWeakReference" title="en/nsSupportsWeakReference">nsSupportsWeakReference</a></dt>
+ <dd>
+  Inherit from this C++ class to add canonical support for <code>nsISupportsWeakReference</code>.</dd>
+</dl>
+<h4 id="String" name="String">String</h4>
+<dl>
+ <dt>
+  <a href="/en/nsACString" title="en/nsACString">nsACString</a></dt>
+ <dd>
+  The <code>nsACString</code> abstract class represents a character string composed of single-byte storage units. This class is typically used to represent ASCII or UTF-8 character arrays.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsAString" title="en/nsAString">nsAString</a></dt>
+ <dd>
+  The <code>nsAString</code> abstract class represents a character string composed of double-byte storage units. This class is typically used to represent Unicode character arrays.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsEmbedString" title="en/nsEmbedString">nsEmbedString</a></dt>
+ <dd>
+  The <code>nsEmbedString</code> concrete class provides a way to construct a <code>nsAString</code> object that allocates null-terminated storage.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsEmbedCString" title="en/nsEmbedCString">nsEmbedCString</a></dt>
+ <dd>
+  The <code>nsEmbedCString</code> concrete class provides a way to construct a <code>nsACString</code> object that allocates null-terminated storage.</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsString" title="en/nsString">nsString</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsCString" title="en/nsCString">nsCString</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsDependentString" title="en/nsDependentString">nsDependentString</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsDependentCString" title="en/nsDependentCString">nsDependentCString</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsDependentSubstring" title="en/nsDependentSubstring">nsDependentSubstring</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/nsDependentCSubstring" title="en/nsDependentCSubstring">nsDependentCSubstring</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_ConvertASCIItoUTF16" title="en/NS_ConvertASCIItoUTF16">NS_ConvertASCIItoUTF16</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_ConvertUTF8toUTF16" title="en/NS_ConvertUTF8toUTF16">NS_ConvertUTF8toUTF16</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_ConvertUTF16toUTF8" title="en/NS_ConvertUTF16toUTF8">NS_ConvertUTF16toUTF8</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NS_LossyConvertUTF16toASCII" title="en/NS_LossyConvertUTF16toASCII">NS_LossyConvertUTF16toASCII</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NsLiteralCString" title="en/NsLiteralCString">nsLiteralCString</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/NsLiteralString" title="en/NsLiteralString">nsLiteralString</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/Getter_Copies" title="en/Getter_Copies">getter_Copies</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/Substring" title="en/Substring">Substring</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/StringHead" title="en/StringHead">StringHead</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/StringTail" title="en/StringTail">StringTail</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/EmptyString" title="en/EmptyString">EmptyString</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<dl>
+ <dt>
+  <a href="/en/EmptyCString" title="en/EmptyCString">EmptyCString</a></dt>
+ <dd>
+  ...</dd>
+</dl>
+<h4 id="Thread Synchronization" name="Thread Synchronization">Thread Synchronization</h4>
+<p>See the page <a href="/En/XPCOM_Thread_Synchronization" title="En/XPCOM_Thread_Synchronization">here</a>.</p>
+<div class="originaldocinfo">
+ <h3 id="Original_Document_Information" name="Original_Document_Information">Original Document Information</h3>
+ <ul>
+  <li>Author: Darin Fisher</li>
+  <li>Last Updated Date: 2005/01/20</li>
+  <li>Copyright Information: Copyright © 2004-2005</li>
+ </ul>
+</div>
+<p></p>
+                  </div>
+
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i aria-hidden="true" class="icon-tags"></i>Tags (7)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/API">API</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsContent">NeedsContent</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/NeedsMarkupWork">NeedsMarkupWork</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/Reference">Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/XPCOM">XPCOM</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/XPCOM%20API%20Reference">XPCOM API Reference</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/R%C3%A9f%C3%A9rence">Référence</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Sheppy">Sheppy</a>, <a href="/en-US/profiles/Kray2">Kray2</a>, <a href="/en-US/profiles/Slowskee">Slowskee</a>, <a href="/en-US/profiles/Jshin">Jshin</a>, <a href="/en-US/profiles/kscarfone">kscarfone</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/cgj">cgj</a>, <a href="/en-US/profiles/Ptak82">Ptak82</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/DarinFisher">DarinFisher</a>, <a href="/en-US/profiles/Pmash">Pmash</a>, <a href="/en-US/profiles/NickolayBot">NickolayBot</a>, <a href="/en-US/profiles/Dria">Dria</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Jorend">Jorend</a>, <a href="/en-US/profiles/Dionys">Dionys</a>
+                          <br />
+          Last updated by:
+          <a href="/en-US/profiles/kscarfone">kscarfone</a>,
+          <time datetime="2013-10-26T12:48:17-07:00">Oct 26, 2013 12:48:17 PM</time>
+                      <br />
+            Last reviewed by:
+            <a href="/en-US/profiles/kscarfone">kscarfone</a>,
+            <time datetime="2013-10-26T12:48:17-07:00">Oct 26, 2013 12:48:17 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/XPCOM_API_Reference$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>  
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+            <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+      </p>
+          </div>
+            <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/XPCOM_API_Reference" selected>
+          English (US)
+        </option>
+                  <option value="/ja/docs/XPCOM_API_Reference">
+            日本語
+          </option>          <option value="/pl/docs/Dokumentacja_API_XPCOM">
+            Polski
+          </option>          <option value="/ru/docs/%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D0%B8%D0%BA_%D0%BF%D0%BE_XPCOM_API">
+            Русский
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  
+</div>
+</footer>
+
+<script src="/en-US/jsi18n/build:54ef076"></script>
+
+          <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+      <script src="//www.google.com/jsapi" type="text/javascript"></script>
+      <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+
+      
+      <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=54ef076"></script>
+              <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=54ef076"></script>
+                  <script type="text/javascript">
+        // Event tracking for the new menu
+        $(function() {
+          $('#nav-main').on('click', 'a', function(e) {
+            window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+          });
+        });
+      </script>
+  
+  
+      <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=54ef076" />
+
+
+<script type="text/javascript" src="https://developer.cdn.mozilla.net/media/js/libs/prism/prism.js" data-manual></script>
+<script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=54ef076"></script>
+        <script type="text/javascript">
+      (function($, ga) {
+        $('#offline-notice-link').on('click', function() {
+          // Open the dialog first
+          $('#offline-dialog-content').dialog({ 
+            width: 540, 
+            modal: true, 
+            buttons: { 
+              Ok: function() { 
+                $(this).dialog('close'); 
+              } 
+            } 
+          });
+          // Record opening of the menu
+          ga.push(['_trackEvent', 'Offline Content Dialog - Open', 'Click', 'Offline content link', '1']);
+        });
+
+        $('#offline-dialog-content').on('click', 'a', function(e, c) {
+          // Record if they go to any of the links (bug link or either option)
+          var title = $(e.currentTarget).attr('data-title');
+          ga.push(['_trackEvent', 'Offline Content Dialog - ' + title, 'Click', title, '1']);
+        });
+      })(jQuery, window._gaq || []);
+    </script>
+    
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>
+
+
+
+ 

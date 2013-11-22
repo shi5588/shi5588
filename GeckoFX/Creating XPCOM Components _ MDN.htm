@@ -1,0 +1,831 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" id="developer-mozilla-org" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+<head>
+          <script src="//cdn.optimizely.com/js/237572123.js"></script>
+  
+    <title>Creating XPCOM Components | MDN</title>
+
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <link rel="home" href="/en-US/">
+  <link rel="copyright" href="#copyright">
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/media/img/favicon.ico">
+
+                  <!--[if !IE 6]><!-->
+      <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/mdn-min.css?build=54ef076" />
+              <link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/wiki-min.css?build=54ef076" />
+            <!--<![endif]-->
+      <!--[if IE]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/ie.css" /><![endif]-->
+      <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/ie7.css" /><![endif]-->
+      <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="all" href="https://developer.cdn.mozilla.net/media/css/ie6.css" /><![endif]-->
+      <link rel="stylesheet" type="text/css" href="https://developer.cdn.mozilla.net/media/css/libs/font-awesome/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" media="print" href="https://developer.cdn.mozilla.net/media/css/mdn-print.css" />
+      <link rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" />
+
+      <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network" />
+
+      
+  
+    <link rel="stylesheet" media="print" href="https://developer.cdn.mozilla.net/media/css/wiki-print-min.css?build=54ef076" />
+              <link rel="stylesheet" type="text/css"
+            href="/en-US/docs/Template:CustomCSS?raw=1" />
+    
+        
+
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://developer.mozilla.org/https://developer.cdn.mozilla.net/media/js/libs/html5.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript">
+  // This represents the site configuration
+  window.mdn = {
+    build: '54ef076',
+    // Properties and settings for CKEditor will go here
+    ckeditor: {},
+    // Feature test results and methods will be placed here
+    features: {},
+    // Ensures gettext always returns something, is always set
+    gettext: function(x) { return x; },
+    // The path to media (images, CSS, JS) in MDN
+    mediaPath: 'https://developer.cdn.mozilla.net/media/',
+    // Wiki-specific settings will be placed here
+    wiki: {
+      autosuggestTitleUrl: '/en-US/docs/get-documents'
+    }
+  };
+</script>
+    <link rel="alternate" type="application/json" href="/en-US/docs/Creating_XPCOM_Components$json" />
+  <link rel="canonical" href="https://developer.mozilla.org/en-US/docs/Creating_XPCOM_Components" />
+
+  <meta property="og:title" content="Creating XPCOM Components" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://developer.mozilla.org/media/img/mdn-logo-sm.png" />
+  <meta property="og:site_name" content="Mozilla Developer Network" />
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Creating_XPCOM_Components" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Creating_XPCOM_Components" />
+  <meta name="twitter:title" content="Creating XPCOM Components" />
+  <meta name="twitter:image" content="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" />
+  <meta name="twitter:site" content="@mozhacks" />
+  <meta name="twitter:creator" content="@mozhacks" />
+
+  
+
+      <script type="text/javascript">
+  // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+  var removeUtms  =   function(){
+      var l = window.location;
+      if( l.hash.indexOf( "utm" ) != -1 ){
+          if( window.history.replaceState ){
+              history.replaceState({},'', l.pathname + l.search);
+          } else {
+              l.hash = "";
+          }
+      };
+  };
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36116321-5'],
+            ['_setAllowAnchor', true],
+                ['_trackPageview']);
+  _gaq.push( removeUtms );
+
+  (function(a, d) {
+    var ga = d.createElement(a); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = d.getElementsByTagName(a)[0]; s.parentNode.insertBefore(ga, s);
+  })('script', document);
+
+</script>
+  </head>
+
+<body id="" class="html-ltr document  " role="document">
+<!--[if lte IE 8]>
+<noscript><div class="global-notice">
+<p><strong>Warning:</strong> The Mozilla Developer Network website employs emerging web standards that may not be fully supported in some versions of Microsoft Internet Explorer. You can improve your experience of this website by enabling JavaScript.</p></div></noscript>
+<![endif]-->
+
+<!-- temporary beta notice -->
+      <div class="redesign-beta-notice"><div class="wrap">
+      MDN is being redesigned! Want to help beta-test it? <a href="/en-US/users/login">(Sign up for and) sign in to your MDN account</a>, and then select <strong>Beta user</strong> in your profile.
+    </div></div>
+  
+
+  <header id="masthead" class="minor new-menu">
+    <div class="wrap">
+      <ul id="nav-access">
+        <li><a href="#language">Select language</a></li>
+                  <li><a href="#q">Skip to search</a></li>
+                <li><a href="#content">Skip to main content</a></li>
+      </ul>
+
+      <div id="branding">
+                <div id="logo"><a href="/en-US/"><img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-sm.png" alt="Mozilla Developer Network" title="Mozilla Developer Network" width="62" height="71"> Mozilla Developer Network</a></div>
+              </div>
+
+              <nav id="nav">
+          <ul id="nav-main" role="menubar">
+            <li id="nav-main-docs" class="menu" rel="menuitem"><a href="#nav-sub-docs" class="toggle" aria-haspopup="true" aria-labelledby="nav-main-docs" title="Read Documentation">Read<br /><em>Docs</em></a>
+              <div id="nav-sub-docs" class="sub-menu" aria-hidden="true">
+                <ul>
+                  <li>
+                    <ul>
+
+                      <li><a href="/en-US/docs/Web/HTML?menu">HTML</a></li>
+                      <li><a href="/en-US/docs/Web/CSS?menu">CSS</a></li>
+                      <li><a href="/en-US/docs/Web/JavaScript?menu">JavaScript</a></li>
+                      <li><a href="/en-US/docs/Web/Guide/Graphics?menu">Graphics</a></li>
+                      <li><a href="/en-US/docs/Web/API?menu">APIs / DOM</a></li>
+                      <li><a href="/en-US/Apps?menu">Apps</a></li>
+                      <li><a href="/en-US/docs/tools?menu">Dev Tools</a></li>
+                      <li><a href="/en-US/docs/Web/MathML?menu">MathML</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="/en-US/docs/Web/Tutorials?menu">Tutorials</a></li>
+                      <li><a href="/en-US/docs/Web/Reference?menu">References</a></li>
+                      <li><a href="/en-US/docs/Web/Guide?menu">Developer Guides</a></li>
+                      <li><a href="/en-US/docs/Accessibility?menu">Accessibility</a></li>
+                      <li><a href="/en-US/demos/?menu">Demos</a></li>
+                      <li><br /><br /><a href="/en-US/docs?menu">...more docs</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li id="nav-main-apps"><a href="https://marketplace.firefox.com/developers/?menu">Make<br /><em>Apps</em></a>
+            </li>
+            <li id="nav-main-firefox" class="menu" role="menuitem"><a href="#nav-sub-firefox" class="firefox toggle" aria-haspopup="true" aria-labelledby="nav-main-firefox">Build & Use<br /><em>Firefox</em></a>
+              <ul id="nav-sub-firefox" class="sub-menu">
+                <li><a href="/en-US/Firefox_OS?menu">Firefox OS</a></li>
+                <li><a href="/en-US/Firefox?menu">Firefox Desktop</a></li>
+                <li><a href="/en-US/docs/Mozilla/Mobile?menu">Mobile</a></li>
+                <li><a href="/en-US/docs/Mozilla/Add-ons?menu">Add-ons</a></li>
+              </ul>
+            </li>
+            <li id="nav-main-demos" role="menuitem"><a href="/en-US/demos/?menu" class="demos">See & Submit<br /><em>Demos</em></a></li>
+            <li id="nav-main-community" class="menu" role="menuitem"><a href="#nav-sub-community" class="community toggle" aria-haspopup="true" aria-labelledby="nav-main-community">Get<br /><em>Involved</em></a>
+              <ul id="nav-sub-community" class="sub-menu">
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Join_the_community?menu">Join the Community</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing?menu">Contribute to MDN</a></li>
+                <li><a href="/en-US/events?menu">Events</a></li>
+                <li><a href="/en-US/docs/Project:MDN/Contributing/Follow_what_s_happening?menu">Tweets, Blogs, and More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      
+            <ul class="user-state signed-out">
+    <li class="user-signin menu">
+    <form class="browserid" action="/en-US/users/browserid_verify" method="POST">
+        <input id="next" name="next" type="hidden" value="/en-US/docs/Creating_XPCOM_Components"/>
+        <input required="required" type="hidden" name="assertion" id="id_assertion" />
+                
+                  <a href="#" target="_blank" class="browserid-signin toggle" aria-haspopup="true" title="Sign in with Persona">Sign in</a>
+                      <div class="browserid-info sub-menu" aria-hidden="true">
+                    <h3>What's this?</h3> <p>MDN has switched to <a href="https://persona.org/" target="_blank" rel="external">Persona</a>, a safe and simple way to sign in with just your e-mail address. <a href="http://identity.mozilla.com/post/12950196039/deploying-browserid-at-mozilla" rel="external">Learn more about why Mozilla is using Persona</a>.</p> <p><strong>Returning members:</strong> sign in with Persona and you'll be connected to your MDN profile (all your information is still here).</p> <p><strong>New members:</strong> sign in with Persona first, then you'll be able to set up your new MDN profile.</p>              <p><a href="#" target="_blank" class="browserid-signin" title="Sign in with Persona">Sign in</a></p>
+            </div>
+                  
+      </form>
+    </li>
+  </ul>
+
+      <form id="site-search" method="get" action="http://www.google.com/search"
+              data-url="/en-US/search">
+        <p>
+          <input type="search" role="search" placeholder="Search MDN" id="q" name="q" value="">
+          <noscript><button type="submit">Search</button></noscript>
+        </p>
+        <input type="hidden" name="sitesearch" value="developer.mozilla.org">
+                <div id="site-search-gg"></div>
+              </form>
+      
+      <a href="//www.mozilla.org/" id="tabzilla">mozilla</a>
+    </div>
+  </header>
+
+    
+      
+  
+<!-- top toolbar -->
+<section id="nav-toolbar"><div><div class="wrap">
+  <!-- right floated navigation -->
+  <nav id="tool-menus" role="navigation">
+    <ul id="tools">
+      <li class="menu">
+        <a href="#page-tools" class="toggle">This page</a>
+        <ul id="page-tools" class="sub-menu">
+          <li class="page-print"> <a href="#" onclick="return window.print();"  title="Print page">Print this page</a></li>
+                      <li><a href="/en-US/docs/new?parent=11087">New sub-page</a></li>
+            <li><a href="/en-US/docs/new?clone=11087">Clone this page</a></li>
+                              
+                    
+                                      </ul>
+      </li>
+            <li class="menu">
+        <a href="#" class="toggle">Languages</a>
+        <ul id="translations">
+                      <li><a rel="internal" href="/es/docs/Creaci%C3%B3n_de_Componentes_XPCOM" title="Creación de Componentes XPCOM">Español</a></li>
+                      <li><a rel="internal" href="/zh-CN/docs/%E5%88%9B%E5%BB%BA_XPCOM_%E7%BB%84%E4%BB%B6" title="创建_XPCOM_组件">中文 (简体)</a></li>
+          
+                      <li><a href="/en-US/docs/Creating_XPCOM_Components$locales">Add translation</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </nav>
+
+  <!-- left crumb navigation -->
+  <nav class="crumbs" role="navigation">
+    <ol>
+            <li class="crumb">Creating XPCOM Components</li>
+    </ol>
+  </nav>
+
+</div></div></section>
+
+
+
+<section id="content">
+  <div class="wrap">
+    <div id="content-main" class="full">
+      <article class="article" role="main"
+          data-current-revision="310169"
+          data-refresh-message="Your changes were merged. However, something else has been edited, so this page will be refreshed to reflect the changes."
+          data-cancel-edit-message="Abort editing in progress? Your unsaved changes will be discarded.">
+      <header id="article-head">
+        <div class="title">
+            <h1 class="page-title">Creating XPCOM Components</h1>
+                        <div class="offline-notice">
+              <a href="javascript:;" id="offline-notice-link"><i aria-hidden="true" class="icon-book"></i>Read content offline</a>
+            </div>
+
+            <div id="offline-dialog-content" title="Read MDN Offline">
+              <p>Did you know that you can read content offline by using one of these tools? If you would like to read offline MDN content in another format, let us know by commenting on <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=665750" data-title="Bug 665750">Bug 665750</a>.</p>
+              <a href="http://kapeli.com/dash?ref=mdn" class="offline-dialog-mac" data-title="Dash App">
+                <img src="https://developer.mozilla.org/media/img/dash-app.png" alt="Dash App" />
+              </a>
+              <a href="http://zealdocs.org" target="_blank" class="offline-dialog-others" data-title="Zeal">
+                <i aria-hidden="true" class="icon-book" style="font-size: 160px;"></i>
+              </a>
+            </div>
+
+                                </div>
+        <ul id="page-buttons">
+            <li class="page-history"><a href="/en-US/docs/Creating_XPCOM_Components$history"><i aria-hidden="true" class="icon-book"></i>History</a></li>
+            
+                                                                      <li class="page-edit"><a href="/en-US/docs/Creating_XPCOM_Components$edit"><i aria-hidden="true" class="icon-pencil"></i>Edit</a></li>
+                    </ul>
+
+        
+               </header>
+
+       
+                                  
+            
+      <div id="wikiArticle" class="page-content boxed">
+                <div id="article-nav">
+          <div class="page-toc">
+            <h2>Table of Contents</h2>
+            <ol>
+              <li><ol><li><a href="#Preface" rel="internal">Preface</a><li><a href="#An_Overview_of_XPCOM" rel="internal">An Overview of XPCOM</a><code></code><li><a href="#Using_XPCOM_Components" rel="internal">Using XPCOM Components</a><li><a href="#Component_Internals" rel="internal">Component Internals</a><li><a href="#Creating_the_Component_Code" rel="internal">Creating the Component Code</a><code></code><code></code><li><a href="#Using_XPCOM_Utilities_to_Make_Things_Easier" rel="internal">Using XPCOM Utilities to Make Things Easier</a><code></code><code></code><code></code><li><a href="#Starting_WebLock" rel="internal">Starting WebLock</a><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><code></code><li><a href="#Finishing_the_Component" rel="internal">Finishing the Component</a><code></code><code></code><code></code><li><a href="#Building_the_WebLock_UI" rel="internal">Building the WebLock UI</a><code></code><code></code><code></code><li><a href="#Packaging_WebLock" rel="internal">Packaging WebLock</a><li><a href="#Appendix_A_-_Setting_up_the_Gecko_SDK" rel="internal">Appendix A - Setting up the Gecko SDK</a><li><a href="#Appendix_B_-_Resources" rel="internal">Appendix B - Resources</a></ol></li>
+            </ol>
+          </div>
+          <ul class="page-anchors">
+            <li class="anchor-tags">
+                              <i aria-hidden="true" class="icon-tags"></i><a href="#document-tags">Tags</a>
+                          </li>
+            <li class="anchor-files">
+                              <i aria-hidden="true" class="icon-paper-clip off"></i><span title="This document has no attachments">Files</span>
+                          </li>
+          </ul>
+        </div>
+                                <p></p><div class="prevnext" style="text-align: right;"> 
+    <p><a href="/en-US/docs/Creating_XPCOM_Components/Preface">Next  »</a></p> 
+</div><p></p>
+<h3 id="Preface" name="Preface"><a href="/en-US/docs/Creating_XPCOM_Components/Preface" title="/en-US/docs/Creating_XPCOM_Components/Preface">Preface</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Preface#Who_Should_Read_This_Book" title="/en-US/docs/Creating_XPCOM_Components/Preface#Who_Should_Read_This_Book">Who Should Read This Book</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Preface#Organization_of_the_Tutorial" title="/en-US/docs/Creating_XPCOM_Components/Preface#Organization_of_the_Tutorial">Organization of the Tutorial</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Preface#Following_Along_with_the_Examples" title="/en-US/docs/Creating_XPCOM_Components/Preface#Following_Along_with_the_Examples">Following Along with the Examples</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Preface#Conventions" title="/en-US/docs/Creating_XPCOM_Components/Preface#Conventions">Conventions</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Preface#Acknowledgements" title="/en-US/docs/Creating_XPCOM_Components/Preface#Acknowledgements">Acknowledgements</a></dd>
+</dl>
+<h3 id="An_Overview_of_XPCOM" name="An_Overview_of_XPCOM"><a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM">An Overview of XPCOM</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#The_XPCOM_Solution" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#The_XPCOM_Solution">The XPCOM Solution</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Gecko" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Gecko">Gecko</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Components" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Components">Components</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Interfaces" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Interfaces">Interfaces</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Interfaces_and_Encapsulation" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Interfaces_and_Encapsulation">Interfaces and Encapsulation</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#The_nsISupports_Base_Interface" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#The_nsISupports_Base_Interface">The <code>nsISupports</code> Base Interface</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#XPCOM_Identifiers" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#XPCOM_Identifiers">XPCOM Identifiers</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#CID" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#CID">CID</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Contract_ID" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Contract_ID">Contract ID</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Factories" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Factories">Factories</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#XPIDL_and_Type_Libraries" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#XPIDL_and_Type_Libraries">XPIDL and Type Libraries</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#XPCOM_Services" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#XPCOM_Services">XPCOM Services</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#XPCOM_Types" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#XPCOM_Types">XPCOM Types</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Method_Types" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Method_Types">Method Types</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Reference_Counting" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Reference_Counting">Reference Counting</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Status_Codes" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Status_Codes">Status Codes</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Variable_Mappings" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Variable_Mappings">Variable Mappings</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Common_XPCOM_Error_Codes" title="/en-US/docs/Creating_XPCOM_Components/An_Overview_of_XPCOM#Common_XPCOM_Error_Codes">Common XPCOM Error Codes</a></dd>
+    </dl>
+  </dd>
+</dl>
+<h3 id="Using_XPCOM_Components" name="Using_XPCOM_Components"><a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components">Using XPCOM Components</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Component_Examples" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Component_Examples">Component Examples</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Cookie_Manager" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Cookie_Manager">Cookie Manager</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#The_WebBrowserFind_Component" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#The_WebBrowserFind_Component">The <strong>WebBrowserFind</strong> Component</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#The_WebLock_Component" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#The_WebLock_Component">The <strong>WebLock</strong> Component</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Component_Use_in_Mozilla" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Component_Use_in_Mozilla">Component Use in Mozilla</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Finding_Mozilla_Components" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Finding_Mozilla_Components">Finding Mozilla Components</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Using_XPCOM_Components_in_Your_Cpp" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#Using_XPCOM_Components_in_Your_Cpp">Using XPCOM Components in Your Cpp</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#XPConnect:_Using_XPCOM_Components_From_Script" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Components#XPConnect:_Using_XPCOM_Components_From_Script">XPConnect: Using XPCOM Components From Script</a></dd>
+    </dl>
+  </dd>
+</dl>
+<h3 id="Component_Internals" name="Component_Internals"><a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals">Component Internals</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#Creating_Components_in_Cpp" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#Creating_Components_in_Cpp">Creating Components in Cpp</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#XPCOM_Initialization" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#XPCOM_Initialization">XPCOM Initialization</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#XPCOM_Registry_Manifests" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#XPCOM_Registry_Manifests">XPCOM Registry Manifests</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#Registration_Methods_in_XPCOM" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#Registration_Methods_in_XPCOM">Registration Methods in XPCOM</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#Autoregistration" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#Autoregistration">Autoregistration</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#The_Shutdown_Process" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#The_Shutdown_Process">The Shutdown Process</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#Three_Parts_of_a_XPCOM_Component_Library" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#Three_Parts_of_a_XPCOM_Component_Library">Three Parts of a XPCOM Component Library</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#XPCOM_Glue" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#XPCOM_Glue">XPCOM Glue</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#The_Glue_Library" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#The_Glue_Library">The Glue Library</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Component_Internals#XPCOM_String_Classes" title="/en-US/docs/Creating_XPCOM_Components/Component_Internals#XPCOM_String_Classes">XPCOM String Classes</a></dd>
+    </dl>
+  </dd>
+</dl>
+<h3 id="Creating_the_Component_Code" name="Creating_the_Component_Code"><a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code">Creating the Component Code</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#What_We.27ll_Be_Working_On" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#What_We.27ll_Be_Working_On">What We'll Be Working On</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Component_Registration" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Component_Registration">Component Registration</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#The_regxpcom_Program" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#The_regxpcom_Program">The <code>regxpcom</code> Program</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Registration_Alternatives" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Registration_Alternatives">Registration Alternatives</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Overview_of_the_WebLock_Module_Source" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Overview_of_the_WebLock_Module_Source">Overview of the <strong>WebLock</strong> Module Source</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Digging_In:_Required_Includes_and_Constants" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Digging_In:_Required_Includes_and_Constants">Digging In: Required Includes and Constants</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Identifiers_in_XPCOM" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Identifiers_in_XPCOM">Identifiers in XPCOM</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Coding_for_the_Registration_Process" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Coding_for_the_Registration_Process">Coding for the Registration Process</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#The_Registration_Methods" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#The_Registration_Methods">The Registration Methods</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Creating_an_Instance_of_Your_Component" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#Creating_an_Instance_of_Your_Component">Creating an Instance of Your Component</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#webLock1.cpp" title="/en-US/docs/Creating_XPCOM_Components/Creating_the_Component_Code#webLock1.cpp"><code>webLock1.cpp</code></a></dd>
+</dl>
+<h3 id="Using_XPCOM_Utilities_to_Make_Things_Easier" name="Using_XPCOM_Utilities_to_Make_Things_Easier"><a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier">Using XPCOM Utilities to Make Things Easier</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#XPCOM_Macros" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#XPCOM_Macros">XPCOM Macros</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Generic_XPCOM_Module_Macros" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Generic_XPCOM_Module_Macros">Generic XPCOM Module Macros</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Common_Implementation_Macros" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Common_Implementation_Macros">Common Implementation Macros</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Declaration_Macros" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Declaration_Macros">Declaration Macros</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#webLock2.cpp" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#webLock2.cpp"><code>webLock2.cpp</code></a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#String_Classes_in_XPCOM" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#String_Classes_in_XPCOM">String Classes in XPCOM</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Using_Strings" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Using_Strings">Using Strings</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#nsEmbedString_and_nsEmbedCString" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#nsEmbedString_and_nsEmbedCString"><code>nsEmbedString</code> and <code>nsEmbedCString</code></a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Smart_Pointers" title="/en-US/docs/Creating_XPCOM_Components/Using_XPCOM_Utilities_to_Make_Things_Easier#Smart_Pointers">Smart Pointers</a></dd>
+</dl>
+<h3 id="Starting_WebLock" name="Starting_WebLock"><a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock">Starting <strong>WebLock</strong></a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Getting_Called_at_Startup" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Getting_Called_at_Startup">Getting Called at Startup</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Registering_for_Notifications" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Registering_for_Notifications">Registering for Notifications</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Getting_Access_to_the_Category_Manager" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Getting_Access_to_the_Category_Manager">Getting Access to the Category Manager</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Providing_Access_to_WebLock" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Providing_Access_to_WebLock">Providing Access to <strong>WebLock</strong></a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Creating_the_WebLock_Programming_Interface" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Creating_the_WebLock_Programming_Interface">Creating the <strong>WebLock</strong> Programming Interface</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Defining_the_WebLock_Interface_in_XPIDL" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Defining_the_WebLock_Interface_in_XPIDL">Defining the <strong>WebLock</strong> Interface in XPIDL</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#The_XPIDL_Syntax" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#The_XPIDL_Syntax">The XPIDL Syntax</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Scriptable_Interfaces" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Scriptable_Interfaces">Scriptable Interfaces</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Subclassing_nsISupports" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Subclassing_nsISupports">Subclassing <code>nsISupports</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#The_Web_Locking_Interface" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#The_Web_Locking_Interface">The Web Locking Interface</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Implementing_WebLock" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Implementing_WebLock">Implementing <strong>WebLock</strong></a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Declaration_Macros" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Declaration_Macros">Declaration Macros</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Representing_Return_Values_in_XPCOM" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Representing_Return_Values_in_XPCOM">Representing Return Values in XPCOM</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#XPIDL_Code_Generation" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#XPIDL_Code_Generation">XPIDL Code Generation</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Getting_the_WebLock_Service_from_a_Client" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Getting_the_WebLock_Service_from_a_Client">Getting the <strong>WebLock</strong> Service from a Client</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Implementing_the_iWebLock_Interface" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Implementing_the_iWebLock_Interface">Implementing the <code>iWebLock</code> Interface</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#The_Directory_Service" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#The_Directory_Service">The Directory Service</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Modifying_Paths_with_nsIFile" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Modifying_Paths_with_nsIFile">Modifying Paths with <code>nsIFile</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Manipulating_Files_with_nsIFile" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Manipulating_Files_with_nsIFile">Manipulating Files with <code>nsIFile</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Using_nsILocalFile_for_Reading_Data" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Using_nsILocalFile_for_Reading_Data">Using <code>nsILocalFile</code> for Reading Data</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Processing_the_White_List_Data" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Processing_the_White_List_Data">Processing the White List Data</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#iWebLock_Method_By_Method" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#iWebLock_Method_By_Method"><code>iWebLock</code> Method By Method</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Lock_and_Unlock" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#Lock_and_Unlock"><code>Lock</code> and <code>Unlock</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#AddSite" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#AddSite"><code>AddSite</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#RemoveSite" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#RemoveSite"><code>RemoveSite</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#SetSites" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#SetSites"><code>SetSites</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#GetNext" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#GetNext"><code>GetNext</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#GetSites" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#GetSites"><code>GetSites</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#HasMoreElements" title="/en-US/docs/Creating_XPCOM_Components/Starting_WebLock#HasMoreElements"><code>HasMoreElements</code></a></dd>
+    </dl>
+  </dd>
+</dl>
+<h3 id="Finishing_the_Component" name="Finishing_the_Component"><a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component">Finishing the Component</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Using_Frozen_Interfaces" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Using_Frozen_Interfaces">Using Frozen Interfaces</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Copying_Interfaces_Into_Your_Build_Environment" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Copying_Interfaces_Into_Your_Build_Environment">Copying Interfaces Into Your Build Environment</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Implementing_the_nsIContentPolicy_Interface" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Implementing_the_nsIContentPolicy_Interface">Implementing the <code>nsIContentPolicy</code> Interface</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Receiving_Notifications" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Receiving_Notifications">Receiving Notifications</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Implementing_the_nsIContentPolicy" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Implementing_the_nsIContentPolicy">Implementing the <code>nsIContentPolicy</code></a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Uniform_Resource_Locators" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Uniform_Resource_Locators">Uniform Resource Locators</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Checking_the_White_List" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Checking_the_White_List">Checking the White List</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Creating_nsIURI_Objects" title="/en-US/docs/Creating_XPCOM_Components/Finishing_the_Component#Creating_nsIURI_Objects">Creating <code>nsIURI</code> Objects</a></dd>
+    </dl>
+  </dd>
+</dl>
+<h3 id="Building_the_WebLock_UI" name="Building_the_WebLock_UI"><a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI">Building the <strong>WebLock</strong> UI</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#User_Interface_Package_List" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#User_Interface_Package_List">User Interface Package List</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Client_Code_Overview" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Client_Code_Overview">Client Code Overview</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#XUL" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#XUL">XUL</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#The_XUL_Document" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#The_XUL_Document">The XUL Document</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#The_Locking_UI" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#The_Locking_UI">The Locking UI</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Site_Adding_UI" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Site_Adding_UI">Site Adding UI</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#weblock.xul" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#weblock.xul"><code>weblock.xul</code></a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Overlaying_New_User_Interface_Into_Mozilla" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Overlaying_New_User_Interface_Into_Mozilla">Overlaying New User Interface Into Mozilla</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#webLockOverlay.xul" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#webLockOverlay.xul"><code>webLockOverlay.xul</code></a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Other_Resources" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Other_Resources">Other Resources</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#weblock.css" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#weblock.css"><code>weblock.css</code></a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Image_Resources" title="/en-US/docs/Creating_XPCOM_Components/Building_the_WebLock_UI#Image_Resources">Image Resources</a></dd>
+    </dl>
+  </dd>
+</dl>
+<h3 id="Packaging_WebLock" name="Packaging_WebLock"><a href="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock" title="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock">Packaging WebLock</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#Component_Installation_Overview" title="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#Component_Installation_Overview">Component Installation Overview</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#Archiving_Resources" title="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#Archiving_Resources">Archiving Resources</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#The_WebLock_Installation_Script" title="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#The_WebLock_Installation_Script">The <strong>WebLock</strong> Installation Script</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#The_WebLock_Trigger_Script" title="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#The_WebLock_Trigger_Script">The <strong>WebLock</strong> Trigger Script</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#Distributing_Your_Component" title="/en-US/docs/Creating_XPCOM_Components/Packaging_WebLock#Distributing_Your_Component">Distributing Your Component</a></dd>
+</dl>
+<h3 id="Appendix_A_-_Setting_up_the_Gecko_SDK" name="Appendix_A_-_Setting_up_the_Gecko_SDK"><a href="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK" title="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK">Appendix A - Setting up the Gecko SDK</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Downloading_and_Setting_the_SDK" title="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Downloading_and_Setting_the_SDK">Downloading and Setting the SDK</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Building_a_Microsoft_Visual_Cpp_Project" title="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Building_a_Microsoft_Visual_Cpp_Project">Building a Microsoft Visual Cpp Project</a>
+    <dl>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Creating_a_New_Project" title="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Creating_a_New_Project">Creating a New Project</a></dd>
+      <dd>
+        <a href="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Adding_the_Gecko_SDK_to_the_Project_Settings" title="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Adding_the_Gecko_SDK_to_the_Project_Settings">Adding the Gecko SDK to the Project Settings</a></dd>
+    </dl>
+  </dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#Building_a_Windows_Project" title="/en-US/docs/Creating XPCOM Components/Setting up the Gecko SDK#Building a Windows Project">Building a Windows Project</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#A_Makefile_for_Unix" title="/en-US/docs/Creating_XPCOM_Components/Setting_up_the_Gecko_SDK#A_Makefile_for_Unix">A Makefile for Unix</a></dd>
+</dl>
+<h3 id="Appendix_B_-_Resources" name="Appendix_B_-_Resources"><a href="/en-US/docs/Creating_XPCOM_Components/Resources" title="/en-US/docs/Creating_XPCOM_Components/Resources">Appendix B - Resources</a></h3>
+<dl>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Resources#WebLock_Resources" title="/en-US/docs/Creating_XPCOM_Components/Resources#WebLock_Resources">WebLock Resources</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Resources#Gecko_Resources" title="/en-US/docs/Creating_XPCOM_Components/Resources#Gecko_Resources">Gecko Resources</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Resources#XPCOM_Resources" title="/en-US/docs/Creating_XPCOM_Components/Resources#XPCOM_Resources">XPCOM Resources</a></dd>
+  <dd>
+    <a href="/en-US/docs/Creating_XPCOM_Components/Resources#General_Development_Resources" title="/en-US/docs/Creating_XPCOM_Components/Resources#General_Development_Resources">General Development Resources</a></dd>
+</dl>
+<p></p><div class="prevnext" style="text-align: right;"> 
+    <p><a href="/en-US/docs/Creating_XPCOM_Components/Preface">Next  »</a></p> 
+</div> <div class="licenseblock"> 
+<p>Copyright (c) 2003 by Doug Turner and Ian Oeschger. This material may be distributed only subject to the terms and conditions set forth in the <a class="external" href="http://www.opencontent.org/openpub/">Open Publication License</a>, v1.02 or later. Distribution of substantively modified versions of this document is prohibited without the explicit permission of the copyright holder. Distribution of the work or derivative of the work in any standard (paper) book form is prohibited unless prior permission is obtained from the copyright holder.</p> 
+</div><p></p>
+<p></p>
+                  </div>
+
+    <section class="page-meta">
+            <section class="page-tags" id="document-tags">
+        <h2><i aria-hidden="true" class="icon-tags"></i>Tags (2)</h2>
+        <div id="deki-page-tags">
+          <ul class="tags tagit ui-widget ui-widget-content">
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/junk">junk</a>
+            </li>
+                        <li class="tagit-choice ui-widget-content ui-state-default">
+                <a class="text tagit-label" href="/en-US/docs/tag/XPCOM">XPCOM</a>
+            </li>
+                      </ul>
+        </div>
+      </section>
+      
+      
+      
+      <section id="doc-contributors" role="contentinfo">
+        Contributors to this page: <a href="/en-US/profiles/Klp99">Klp99</a>, <a href="/en-US/profiles/Felix.Schwarz">Felix.Schwarz</a>, <a href="/en-US/profiles/Elchi3">Elchi3</a>, <a href="/en-US/profiles/Hao">Hao</a>, <a href="/en-US/profiles/Nickolay">Nickolay</a>, <a href="/en-US/profiles/Callek">Callek</a>, <a href="/en-US/profiles/Rahly">Rahly</a>, <a href="/en-US/profiles/trevorh">trevorh</a>, <a href="/en-US/profiles/Waldo">Waldo</a>, <a href="/en-US/profiles/Mgjbot">Mgjbot</a>, <a href="/en-US/profiles/NickolayBot">NickolayBot</a>, <a href="/en-US/profiles/Dria">Dria</a>
+                          <br />
+          Last updated by:
+          <a href="/en-US/profiles/trevorh">trevorh</a>,
+          <time datetime="2012-09-23T22:04:52-07:00">Sep 23, 2012 10:04:52 PM</time>
+                      <br />
+            Last reviewed by:
+            <a href="/en-US/profiles/trevorh">trevorh</a>,
+            <time datetime="2012-09-23T22:04:52-07:00">Sep 23, 2012 10:04:52 PM</time>
+                        </section>
+    </section>
+  </article>
+  <form id="wiki-page-edit" class="editing" method="post" action="/en-US/docs/Creating_XPCOM_Components$edit">
+      <input type="hidden" name="form" id="form" value="rev" />
+      <input type="hidden" name="content" id="content" value="" />
+  </form>
+      </div>
+   </div>
+    </section>  
+
+<section id="footbar">
+<div class="wrap">
+  <p>
+  Is MDN helpful to you? Please <a href="/en-US/docs/Project:Feedback">share your feedback</a> with us. Or join our <a id="dev-mdc-link" href="//lists.mozilla.org/listinfo/dev-mdc">mailing list about improving MDN content</a>.  </p>
+</div>
+</section>
+<footer id="site-info" class="footer" role="contentinfo">
+<div class="wrap">
+    <div id="legal">
+      <img src="https://developer.cdn.mozilla.net/media/img/mdn-logo-tiny.png" alt="" width="42" height="48">
+      <p id="copyright">&copy; 2005 - 2013 Mozilla Developer Network and individual contributors</p>
+            <p>
+      Content is available under <a href="/en-US/docs/Project:Copyrights">these licenses</a>      &bull; <a href="/en-US/docs/Project:About">About MDN</a>
+      &bull; <a href="//github.com/mozilla/kuma">Contribute to the code</a>
+      &bull; <a href="//www.mozilla.org/en-US/privacy">Privacy Policy</a>
+      </p>
+          </div>
+            <form class="languages go" method="get" action="/en-US/docs">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option value="/en-US/docs/Creating_XPCOM_Components" selected>
+          English (US)
+        </option>
+                  <option value="/es/docs/Creaci%C3%B3n_de_Componentes_XPCOM">
+            Español
+          </option>          <option value="/zh-CN/docs/%E5%88%9B%E5%BB%BA_XPCOM_%E7%BB%84%E4%BB%B6">
+            中文 (简体)
+          </option>      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  
+</div>
+</footer>
+
+<script src="/en-US/jsi18n/build:54ef076"></script>
+
+          <script src="//mozorg.cdn.mozilla.net/en-US/tabzilla/tabzilla.js" async></script>
+      <script src="//www.google.com/jsapi" type="text/javascript"></script>
+      <script src="https://login.persona.org/include.js" type="text/javascript"></script>
+
+      
+      <script src="https://developer.cdn.mozilla.net/media/js/mdn-min.js?build=54ef076"></script>
+              <script src="https://developer.cdn.mozilla.net/media/js/wiki-min.js?build=54ef076"></script>
+                  <script type="text/javascript">
+        // Event tracking for the new menu
+        $(function() {
+          $('#nav-main').on('click', 'a', function(e) {
+            window._gaq && _gaq.push(['_trackEvent', 'Menu', 'Click', e.target.innerHTML, e.target.href]);
+          });
+        });
+      </script>
+  
+  
+      <!-- include syntax highlighting scripts -->
+<link rel="stylesheet" media="screen,projection,tv" href="https://developer.cdn.mozilla.net/media/css/syntax-prism-min.css?build=54ef076" />
+
+
+<script type="text/javascript" src="https://developer.cdn.mozilla.net/media/js/libs/prism/prism.js" data-manual></script>
+<script src="https://developer.cdn.mozilla.net/media/js/syntax-prism-min.js?build=54ef076"></script>
+        <script type="text/javascript">
+      (function($, ga) {
+        $('#offline-notice-link').on('click', function() {
+          // Open the dialog first
+          $('#offline-dialog-content').dialog({ 
+            width: 540, 
+            modal: true, 
+            buttons: { 
+              Ok: function() { 
+                $(this).dialog('close'); 
+              } 
+            } 
+          });
+          // Record opening of the menu
+          ga.push(['_trackEvent', 'Offline Content Dialog - Open', 'Click', 'Offline content link', '1']);
+        });
+
+        $('#offline-dialog-content').on('click', 'a', function(e, c) {
+          // Record if they go to any of the links (bug link or either option)
+          var title = $(e.currentTarget).attr('data-title');
+          ga.push(['_trackEvent', 'Offline Content Dialog - ' + title, 'Click', title, '1']);
+        });
+      })(jQuery, window._gaq || []);
+    </script>
+    
+
+<script src="/en-US/waffles.js" type="text/javascript" async></script>
+</body>
+</html>
+
+
+
+ 
